@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -36,39 +35,40 @@ public class HisTransActivity extends AppCompatActivity {;
         setContentView(R.layout.history_transaction);
         getData();
         setControl();
-        renderView();
         setEvent();
     }
     private void getData(){
-        Bank  Agribank = new Bank(1, 0.01, "Agribank",R.drawable.agribank_logo);
-        //gọi api lại mõi khi cần thông tin tài khoản được liên kết phải cập nhật real-time
-        BankAccount myBankAccount = new BankAccount("AGR001", 1000000, "0390102035", Agribank);
-
-        listTrans = new ArrayList<>();
-        listTrans.add(Arrays.asList(
-                new BankTrans("W001", 30000, LocalDateTime.of(2023, 3, 16, 20, 50, 30), 500000, myBankAccount, Transactions.BANK_WITHDRAW),
-                new TransferTrans("T001", 60000, LocalDateTime.of(2023, 3, 16, 20, 50, 30), 500000, new Account("03681111111", "s@gmail.com", new User("Nguyễn Cảnh", null)), Transactions.TRANSFER_RECEIVE, "Chuyển tiền mua thiết bị"),
-                new BankTrans("W001", 30000, LocalDateTime.of(2023, 3, 16, 20, 50, 30), 500000, myBankAccount, Transactions.BANK_WITHDRAW)
-        ));
-        listTrans.add(Arrays.asList(
-                new TransferTrans("T001", 60000, LocalDateTime.of(2023, 4, 16, 20, 50, 30), 500000, new Account("03681111111", "s@gmail.com", new User("Nguyễn Cảnh", null)), Transactions.TRANSFER_SEND, "Chuyển tiền mua thiết bị"),
-                new TransferTrans("T001", 60000, LocalDateTime.of(2023, 4, 16, 20, 50, 30), 500000, new Account("03681111111", "s@gmail.com", new User("Nguyễn Cảnh", null)), Transactions.TRANSFER_SEND, "Chuyển tiền mua thiết bị")
-        ));
-        listTrans.add(Arrays.asList(
-                new BankTrans("W001", 30000, LocalDateTime.of(2023, 5, 16, 20, 50, 30), 500000, myBankAccount, Transactions.BANK_DEPOSIT)
-        ));
-
-//        new HttpAsyncTask(HisTransActivity.this).execute(MyId.getAdd("transactions"));
 
         new HttpAsyncTask(new HttpAsyncTask.TaskCompleteListener<String>() {
             @Override
             public void onTaskComplete(String result) {
-                Gson gson = new Gson();
-                Type listType = new TypeToken<List<Integer>>(){}.getType();
-                List<Integer> list = gson.fromJson(result, listType);
-                Toast.makeText(HisTransActivity.this, String.valueOf(list.get(0)), Toast.LENGTH_SHORT).show();
+//                Gson gson = new Gson();
+//                Type listType = new TypeToken<List<Integer>>(){}.getType();
+//                List<Integer> list = gson.fromJson(result, listType);
+//                Toast.makeText(HisTransActivity.this, String.valueOf(list.get(0)), Toast.LENGTH_SHORT).show();
+
+                Bank  Agribank = new Bank(1, 0.01, "Agribank",R.drawable.agribank_logo);
+                //gọi api lại mõi khi cần thông tin tài khoản được liên kết phải cập nhật real-time
+                BankAccount myBankAccount = new BankAccount("AGR001", 1000000, "0390102035", Agribank);
+
+                listTrans = new ArrayList<>();
+                listTrans.add(Arrays.asList(
+                        new BankTrans("W001", 30000, LocalDateTime.of(2023, 3, 16, 20, 50, 30), 500000, myBankAccount, Transactions.BANK_WITHDRAW),
+                        new TransferTrans("T001", 60000, LocalDateTime.of(2023, 3, 16, 20, 50, 30), 500000, new Account("03681111111", "s@gmail.com", new User("Nguyễn Cảnh", null)), Transactions.TRANSFER_RECEIVE, "Chuyển tiền mua thiết bị"),
+                        new BankTrans("W001", 30000, LocalDateTime.of(2023, 3, 16, 20, 50, 30), 500000, myBankAccount, Transactions.BANK_WITHDRAW)
+                ));
+                listTrans.add(Arrays.asList(
+                        new TransferTrans("T001", 60000, LocalDateTime.of(2023, 4, 16, 20, 50, 30), 500000, new Account("03681111111", "s@gmail.com", new User("Nguyễn Cảnh", null)), Transactions.TRANSFER_SEND, "Chuyển tiền mua thiết bị"),
+                        new TransferTrans("T001", 60000, LocalDateTime.of(2023, 4, 16, 20, 50, 30), 500000, new Account("03681111111", "s@gmail.com", new User("Nguyễn Cảnh", null)), Transactions.TRANSFER_SEND, "Chuyển tiền mua thiết bị")
+                ));
+                listTrans.add(Arrays.asList(
+                        new BankTrans("W001", 30000, LocalDateTime.of(2023, 5, 16, 20, 50, 30), 500000, myBankAccount, Transactions.BANK_DEPOSIT)
+                ));
+
+                renderView();
             }
-        }).execute(MyId.getAdd("transactions"));
+        }).execute(HttpAsyncTask.getRoute("transactions"));
+//    }).execute(HttpAsyncTask.getRoute("transactions"));
     }
     private void renderView(){
         recyclerView = findViewById(R.id.recy_total_trans_his);
@@ -95,15 +95,14 @@ public class HisTransActivity extends AppCompatActivity {;
             @Override
             public void onClick(View view) {
                 hiliButton(btnAllTrans);
-//                recyclerView.setAdapter(new TotalTransViewAdapter(HisTransActivity.this, listTrans));
+                recyclerView.setAdapter(new TotalTransViewAdapter(HisTransActivity.this, listTrans));
             }
         });
         btnDepositTrans.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 hiliButton(btnDepositTrans);
-//                recyclerView.setAdapter(new TotalTransViewAdapter(HisTransActivity.this, listFilteredTrans(Transactions.BANK_DEPOSIT)));
-                titleLayout.setText("chi tiet lich su giao dich");
+                recyclerView.setAdapter(new TotalTransViewAdapter(HisTransActivity.this, listFilteredTrans(Transactions.BANK_DEPOSIT)));
             }
         });
         btnWithTrans.setOnClickListener(new View.OnClickListener() {

@@ -1,19 +1,11 @@
 package com.example.mobileappprogrammingproject;
 
-import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.content.Context;
 import android.os.AsyncTask;
-import android.view.View;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import com.google.gson.Gson;
 
 public class HttpAsyncTask extends AsyncTask<String, Void, String> {
     private TaskCompleteListener<String> listener;
@@ -63,6 +55,9 @@ public class HttpAsyncTask extends AsyncTask<String, Void, String> {
         if (listener != null) {
             listener.onTaskComplete(result);
         }
+    }
+    public static String getRoute(String route){
+        return String.format("http://%s:3000/%s","192.168.1.9", route);
     }
 
     public interface TaskCompleteListener<T> {
