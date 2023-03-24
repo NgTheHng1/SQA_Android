@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="secondary_color_text">#808080</color>
+    <color name="app_color">#D82D88</color>
+    <color name="time_stamp_bar">#D5EDFE</color>
+    <color name="info_color">#5BC0DE</color>
+    <color name="secondary_app_color">#FFD6E7</color>
+    <color name="success_color">#008000</color>
+    <color name="second_trans_item_color">#f7f7f7</color>
+    <color name="unchecked_bank_item_color">#ADD5D5D5</color>
+</resources>

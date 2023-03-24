@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/a_trans_detail"
+    android:layout_width="match_parent"
+    android:layout_height="76dp"
+    android:background="@color/white">
+
+    <ImageView
+        android:id="@+id/trans_image"
+        android:layout_width="58dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/receive_money_success_2"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="15dp"
+        android:paddingTop="4dp"/>
+
+    <TextView
+        android:id="@+id/trans_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="3dp"
+        android:layout_marginBottom="3dp"
+        android:layout_toRightOf="@id/trans_image"
+        android:text="Nạp tiền vào ví từ Agribank"
+        android:textColor="@color/black"
+        android:textSize="15dp"/>
+
+    <TextView
+        android:id="@+id/trans_detail_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:text="21:01 - 13/02/2023"
+        android:layout_below="@id/trans_type"
+        android:layout_alignLeft="@+id/trans_type"
+        android:textSize="11sp"
+        android:layout_marginTop="3dp"/>
+
+    <TextView
+        android:id="@+id/text_so_du"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:text="Số dư ví:"
+        android:layout_below="@id/trans_detail_time"
+        android:layout_alignLeft="@+id/trans_type"
+        android:textSize="11sp"
+        android:layout_marginTop="4dp"/>
+
+    <TextView
+        android:id="@+id/balance_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:text="800.000đ"
+        android:layout_toEndOf="@id/text_so_du"
+        android:layout_alignBottom="@id/text_so_du"
+        android:textSize="11sp"
+        android:textStyle="bold"
+        android:layout_marginStart="2dp"/>
+
+    <TextView
+        android:id="@+id/blance_change"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+300.000đ"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="10dp"/>
+
+</RelativeLayout>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/item_container">
+    <ImageView
+        android:id="@+id/bank_logo"
+        android:layout_width="79dp"
+        android:layout_height="79dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="20dp"
+        android:src="@drawable/techcombank_logo" />
+
+    <TextView
+        android:id="@+id/text_bank_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/bank_logo"
+        android:layout_toEndOf="@id/bank_logo"
+        android:text="Agribank"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-medium"
+        android:textColor="@color/black"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:id="@+id/bank_fee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_bank_name"
+        android:layout_alignStart="@id/text_bank_name"
+        android:fontFamily="sans-serif-thin"
+        android:text="Miễn phí thanh toán"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"/>
+
+    <androidx.appcompat.widget.AppCompatCheckBox
+        android:id="@+id/bank_check_box"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/text_bank_name"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="21dp"
+        android:button="@drawable/checkbox_style" />
+
+</RelativeLayout>
