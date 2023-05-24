@@ -5,7 +5,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#d82d8b">
+    android:background="@drawable/background_homepage"
+    >
+
+<!--    <ImageView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_alignParentTop="true"-->
+<!--        android:src="@drawable/home_background_2"/>-->
     
     <LinearLayout
         android:id="@+id/layout1"
@@ -28,18 +35,7 @@
             android:paddingTop="3dp"/>
 
         <ImageButton
-            android:id="@+id/imageButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/noti_icon"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="6dp"
-            android:background="#d82d8b"
-            android:contentDescription="Notification"/>
-
-        <ImageButton
-            android:id="@+id/imageButton2"
+            android:id="@+id/icon_user"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -47,7 +43,8 @@
             android:layout_marginTop="5dp"
             android:layout_marginEnd="4dp"
             android:background="#d82d8b"
-            android:contentDescription="User information"/>
+            android:contentDescription="User information"
+            android:backgroundTint="@color/transparent"/>
 
     </LinearLayout>
 
@@ -55,17 +52,19 @@
         android:id="@id/layout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/layout1">
+        android:layout_below="@id/layout1"
+        android:background="@color/transparent">
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
+            android:fontFamily="sans-serif-medium"
             android:gravity="center"
-            android:text="Xin chào,"
-            android:textColor="@color/white"
-            android:textSize="22sp" />
+            android:text="Xin chào"
+            android:textSize="24sp"
+            android:textColor="#F43F81"/>
 
         <TextView
             android:id="@+id/user_name"
@@ -76,8 +75,10 @@
             android:layout_marginBottom="45dp"
             android:gravity="center"
             android:text="NGUYEN THE HUNG"
-            android:textColor="@color/white"
-            android:textSize="22sp" />
+            android:textSize="25sp"
+            android:fontFamily="sans-serif-medium"
+            android:textStyle="bold"
+            android:textColor="#F43F81"/>
     </RelativeLayout>
 
     <RelativeLayout
@@ -89,7 +90,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="70dp"
-            android:background="#DADADA"
+            android:background="@color/transparent"
             android:layout_marginTop="50dp"/>
 
         <RelativeLayout
@@ -105,21 +106,22 @@
                 android:text="Ví của tôi"
                 android:textSize="16sp"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="10dp"/>
+                android:layout_marginTop="10dp"
+                android:textStyle="bold"/>
 
             <ImageButton
-                android:id="@+id/imageView"
-                android:layout_width="wrap_content"
-                android:layout_height="18dp"
+                android:id="@+id/isBalanceHidden"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:layout_marginStart="3dp"
-                android:layout_marginTop="13dp"
+                android:layout_marginTop="11dp"
                 android:layout_marginEnd="5dp"
                 android:layout_marginBottom="5dp"
                 android:layout_toRightOf="@+id/wallet_text"
                 android:adjustViewBounds="true"
                 android:background="#fff"
                 android:scaleType="fitCenter"
-                app:srcCompat="@drawable/no_eye"/>
+                app:srcCompat="@drawable/invisible_icon"/>
 
             <TextView
                 android:id="@+id/balance"
@@ -129,17 +131,21 @@
                 android:text="************"
                 android:textSize="18sp"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="7dp"/>
+                android:layout_marginTop="7dp"
+                android:textStyle="bold"/>
 
             <TextView
+                android:id="@+id/txt_user"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Quản lý tài khoản"
                 android:layout_alignParentRight="true"
                 android:textSize="16sp"
                 android:layout_centerVertical="true"
-                android:drawableEnd="@drawable/next_arrow"
-                android:layout_marginRight="3dp"/>
+                android:layout_marginRight="3dp"
+                app:drawableEndCompat="@drawable/next_arrow"
+                android:textStyle="bold"
+                />
         </RelativeLayout>
 
     </RelativeLayout>
@@ -165,14 +171,15 @@
         <GridLayout
             android:id="@+id/main_functions"
             android:layout_width="match_parent"
-            android:layout_height="130dp"
+            android:layout_height="260dp"
             android:layout_below="@id/textView3"
             android:layout_marginTop="7dp"
             android:background="@color/white"
             android:columnCount="3"
-            android:rowCount="1">
+            android:rowCount="2">
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/deposit"
                 android:layout_width="52dp"
                 android:layout_height="wrap_content"
                 android:layout_row="0"
@@ -192,7 +199,7 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="wrap_content"
+                        android:layout_width="60dp"
                         android:layout_height="wrap_content"
                         android:src="@drawable/add_money" />
 
@@ -206,6 +213,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/card_withdraw"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_row="0"
@@ -239,6 +247,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/transfer"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:layout_row="0"
@@ -271,50 +280,49 @@
                         android:textSize="16sp" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_pay_bill"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_row="1"
+                android:layout_rowWeight="1"
+                android:layout_column="0"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill"
+                android:layout_margin="7dp"
+                app:cardCornerRadius="7dp"
+                app:cardElevation="7dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="15dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/pay_bill" />
+
+                    <TextView
+                        android:layout_width="85dp"
+                        android:layout_height="wrap_content"
+                        android:text="Thanh toán hóa đơn"
+                        android:textAlignment="center"
+                        android:textSize="16sp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
         </GridLayout>
 
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_below="@id/main_functions"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="13dp"
-            android:layout_marginTop="10dp"
-            android:text="Có thể bạn quan tâm"
-            android:textColor="@color/black"
-            android:textSize="19sp" />
 
-        <HorizontalScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/textView4"
-            android:layout_marginTop="9dp">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/momo_sale_1"
-                    android:layout_marginStart="10dp"/>
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/momo_sale_2"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"/>
-            </LinearLayout>
-        </HorizontalScrollView>
     </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:background="@color/white"
         android:layout_alignParentBottom="true">
 
         <LinearLayout
@@ -330,16 +338,19 @@
                 android:layout_gravity="center"/>
 
             <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/home_page_icon"
+                android:layout_width="43dp"
+                android:layout_height="36dp"
+                android:src="@drawable/home_page_icon_clicked"
                 android:background="@color/white"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center"
+                android:scaleType="fitCenter"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="TRANG CHỦ"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center"
+                android:textColor="@color/app_color"
+                android:layout_marginTop="-4dp"/>
 
         </LinearLayout>
 
@@ -359,7 +370,7 @@
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="36dp"
-                android:src="@drawable/history_transaction"
+                android:src="@drawable/history_trans_icon"
                 android:background="@color/white"
                 android:layout_gravity="center"
                 android:scaleType="fitCenter"/>
@@ -373,6 +384,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/user_info_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"

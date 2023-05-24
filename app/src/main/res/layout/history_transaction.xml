@@ -9,7 +9,7 @@
         android:id="@+id/title_trans_detail"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="@color/app_color"
+        android:background="@drawable/background_homepage"
         android:layout_alignParentTop="true">
 
     <ImageButton
@@ -27,7 +27,8 @@
             android:layout_centerInParent="true"
             android:text="Lịch sử giao dịch"
             android:textColor="@color/white"
-            android:textSize="27sp" />
+            android:textSize="28sp"
+            android:textStyle="bold"/>
 
     </RelativeLayout>
     
@@ -39,17 +40,22 @@
         android:background="@color/white">
 
         <EditText
+            android:drawablePadding="8dp"
+            android:id="@+id/trans_search"
             android:layout_width="match_parent"
             android:layout_height="33dp"
             android:layout_margin="8dp"
             android:background="@drawable/history_input_search"
             android:drawableStart="@drawable/search_icon_his"
             android:hint="Tìm kiếm giao dịch"
+            android:imeOptions="actionDone"
+            android:inputType="text"
             android:paddingStart="8dp"
             android:paddingTop="2dp"
             android:textAlignment="textStart"
             android:textColor="@color/secondary_color_text"
             android:textSize="15sp" />
+
         <HorizontalScrollView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
@@ -131,12 +137,27 @@
                     android:fontFamily="sans-serif-medium"
                     android:textStyle="normal"/>
 
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_paid_bill"
+                    android:layout_width="75dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="7dp"
+                    android:background="@drawable/unclicked_button"
+                    android:text="Hoá đơn"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:fontFamily="sans-serif-medium"
+                    android:textStyle="normal"
+                    android:layout_marginEnd="6dp"/>
+
 
             </LinearLayout>
         </HorizontalScrollView>
     </LinearLayout>
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
@@ -144,9 +165,10 @@
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/recy_total_trans_his"/>
+            android:id="@+id/recy_total_trans_his"
+            android:nestedScrollingEnabled="false"/>
 
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -167,16 +189,18 @@
                 android:layout_gravity="center"/>
 
             <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/home_page_icon"
+                android:layout_width="43dp"
+                android:layout_height="36dp"
+                android:src="@drawable/home_page_icon_new"
                 android:background="@color/white"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center"
+                android:scaleType="fitCenter"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="TRANG CHỦ"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center"
+                android:layout_marginTop="-4dp"/>
 
         </LinearLayout>
 
@@ -195,7 +219,7 @@
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="36dp"
-                android:src="@drawable/history_transaction"
+                android:src="@drawable/history_trans_icon_clicked"
                 android:background="@color/white"
                 android:layout_gravity="center"
                 android:scaleType="fitCenter"/>
@@ -210,6 +234,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/user_info_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"

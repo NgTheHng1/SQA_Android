@@ -18,5 +18,6 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recy_trans_item_by_month"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:nestedScrollingEnabled="false"/>
 </LinearLayout>

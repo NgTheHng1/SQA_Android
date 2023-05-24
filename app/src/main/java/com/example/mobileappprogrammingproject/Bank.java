@@ -13,7 +13,21 @@ public class Bank {
         this.sourceImg = sourceImg;
     }
 
+    public Bank(String bankName) {
+        this.bankName = bankName;
+    }
+
     public Bank() {
+    }
+
+    public static int[] getBankSourceImg(){
+        return new int[]{
+                0,
+                R.drawable.sacombank_logo,
+                R.drawable.vietinbank_logo,
+                R.drawable.agribank_logo,
+                R.drawable.techcombank_logo
+        };
     }
 
     public int getSourceImg() {

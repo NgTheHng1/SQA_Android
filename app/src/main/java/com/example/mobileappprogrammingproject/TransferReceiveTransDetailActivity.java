@@ -1,6 +1,7 @@
 package com.example.mobileappprogrammingproject;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ public class TransferReceiveTransDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.app_color));
         setContentView(R.layout.transfer_receive_trans_detail);
         getData();
         setControl();
@@ -20,7 +22,7 @@ public class TransferReceiveTransDetailActivity extends AppCompatActivity {
     }
     private void getData(){
         Intent intent = getIntent();
-        bundle = intent.getBundleExtra("bundlePackage");
+        bundle = intent.getBundleExtra("bundle");
     }
     private void setControl(){
         tvTransType = findViewById(R.id.text_transfer);

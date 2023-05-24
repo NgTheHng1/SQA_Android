@@ -13,6 +13,12 @@
     <color name="info_color">#5BC0DE</color>
     <color name="secondary_app_color">#FFD6E7</color>
     <color name="success_color">#008000</color>
-    <color name="second_trans_item_color">#f7f7f7</color>
-    <color name="unchecked_bank_item_color">#ADD5D5D5</color>
+    <color name="second_trans_item_color">#EEEEEE</color>
+    <color name="unchecked">#60EAEAEA</color>
+    <color name="transparent">#00FFFFFF</color>
+    <color name="mid_gradient">#D82D88</color>
+    <color name="start_gradient">#FF93CD</color>
+    <color name="end_gradient">#B30A71</color>
+    <color name="background_light_gray">#F1F1F1</color>
+
 </resources>

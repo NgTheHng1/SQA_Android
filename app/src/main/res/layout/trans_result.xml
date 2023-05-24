@@ -47,12 +47,12 @@
             android:textSize="28sp"
             android:textStyle="bold" />
 
-        <ImageView
+        <pl.droidsonroids.gif.GifImageView
             android:id="@+id/check_logo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
             android:layout_below="@id/text_xac_nhan"
-            android:src="@drawable/green_check_logo"
+            android:src="@drawable/successful_gif"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"/>
 
@@ -91,13 +91,15 @@
 
             <ImageView
                 android:id="@+id/info_logo"
-                android:layout_centerVertical="true"
                 android:layout_width="wrap_content"
-                android:layout_margin="20dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
-                android:src="@drawable/info_icon"
-                android:layout_centerHorizontal="true"/>
+                android:layout_centerInParent="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                android:src="@drawable/info_icon" />
 
             <TextView
                 android:id="@+id/text3"
@@ -196,7 +198,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/trans_code"
+                android:id="@+id/trans_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignBottom="@id/text7"
@@ -220,8 +222,9 @@
                     android:layout_height="50dp"
                     android:layout_weight="1"
                     android:text="Màn hình chính"
+                    android:textStyle="bold"
                     android:textAllCaps="false"
-                    android:textSize="16sp"
+                    android:textSize="20sp"
                     android:background="@drawable/button_trans_result_1"/>
 
                 <TextView
@@ -235,7 +238,7 @@
                     android:layout_weight="1"
                     android:text="Tạo giao dịch mới"
                     android:textAllCaps="false"
-                    android:textSize="16sp"
+                    android:textSize="20sp"
                     android:textColor="@color/app_color"
                     android:background="@drawable/button_trans_result_2"/>
 

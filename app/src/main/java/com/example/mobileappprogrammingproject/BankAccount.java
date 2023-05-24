@@ -14,6 +14,10 @@ public class BankAccount {
         this.bank = bank;
     }
 
+    public BankAccount(Bank bank){
+        this.bank = bank;
+    }
+
     public BankAccount() {
     }
 

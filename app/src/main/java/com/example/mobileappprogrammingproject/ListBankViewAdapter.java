@@ -2,32 +2,25 @@ package com.example.mobileappprogrammingproject;
 
 import android.app.Activity;
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class ListBankViewAdapter extends RecyclerView.Adapter<ListBankViewAdapter.BankItemViewHolder>{
     Context context;
     List<Bank> listBank;
-    int checkedPosition = -1;
+    int checkedPosition = 0;
 
     public ListBankViewAdapter(Context context, List<Bank> listBank) {
         this.context = context;
@@ -47,9 +40,13 @@ public class ListBankViewAdapter extends RecyclerView.Adapter<ListBankViewAdapte
 
         holder.imgBank.setImageResource(listBank.get(position).getSourceImg());
         holder.tvBankName.setText(listBank.get(position).getBankName());
-        holder.tvBankFee.setText("Miễn phí");
-        holder.cbBankSelect.setChecked(false);
-        holder.itemContainer.setBackgroundColor(ContextCompat.getColor(context, R.color.unchecked_bank_item_color));
+
+        String feeStr = String.format("Miễn phí", listBank.get(position).getBankFee());
+        holder.tvBankFee.setText(feeStr);
+
+//        holder.cbBankSelect.setChecked(position == 0);
+        holder.itemContainer.setBackgroundColor(ContextCompat.getColor(context,
+                checkedPosition == position ? R.color.white : R.color.unchecked));
 
         holder.cbBankSelect.setChecked(checkedPosition == position);
 
@@ -63,10 +60,14 @@ public class ListBankViewAdapter extends RecyclerView.Adapter<ListBankViewAdapte
                     holder.itemContainer.setBackgroundColor(ContextCompat.getColor(context, R.color.white));
 
                     notifyItemChanged(lastChecked);
+
+                    ((WithdrawActiveActivity) context).bankOrderSelected = checkedPosition;
                 }else{
-                    holder.itemContainer.setBackgroundColor(ContextCompat.getColor(context, R.color.unchecked_bank_item_color));
-                    if(checkedPosition == holder.getBindingAdapterPosition())
+                    holder.itemContainer.setBackgroundColor(ContextCompat.getColor(context, R.color.unchecked));
+                    if(checkedPosition == holder.getBindingAdapterPosition()) {
                         checkedPosition = -1;
+                        ((WithdrawActiveActivity) context).bankOrderSelected = checkedPosition;
+                    }
                 }
             }
         });

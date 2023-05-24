@@ -1,6 +1,7 @@
 package com.example.mobileappprogrammingproject;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ public class WithdrawTransDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.app_color));
         setContentView(R.layout.withdraw_trans_detail);
         getData();
         setControl();
@@ -25,7 +27,7 @@ public class WithdrawTransDetailActivity extends AppCompatActivity {
     }
     private void getData(){
         Intent intent = getIntent();
-        bundle = intent.getBundleExtra("bundlePackage");
+        bundle = intent.getBundleExtra("bundle");
     }
 
     private void setControl(){

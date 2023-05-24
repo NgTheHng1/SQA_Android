@@ -15,6 +15,10 @@ public class User {
         this.phoneNum = phoneNum;
     }
 
+    public User(String fullName) {
+        this.fullName = fullName;
+    }
+
     public String getIdNum() {
         return IdNum;
     }

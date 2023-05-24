@@ -18,6 +18,11 @@ public class Account {
         this.user = user;
     }
 
+    public Account(String phoneNum, User user) {
+        this.phoneNum = phoneNum;
+        this.user = user;
+    }
+
     public Account() {
     }
 

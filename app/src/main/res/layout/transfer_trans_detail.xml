@@ -1,332 +1,369 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <RelativeLayout
-        android:id="@+id/navbar"
+<!--    <RelativeLayout-->
+<!--        android:id="@+id/navbar"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="60dp"-->
+<!--        android:background="@color/app_color">-->
+
+<!--        <ImageButton-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:src="@drawable/arrow_back"-->
+<!--            android:background="@android:color/transparent"-->
+<!--            android:layout_centerVertical="true"/>-->
+
+<!--    </RelativeLayout>-->
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="@color/app_color"
-        android:layout_alignParentTop="true">
-
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/arrow_back"
-            android:background="@android:color/transparent"
-            android:layout_centerVertical="true"/>
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/trans_money_box"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/navbar">
-
-        <TextView
-            android:id="@+id/text_detail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Chi tiết giao dịch"
-            android:textColor="@color/app_color"
-            android:textSize="28sp"
-            android:textStyle="bold"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="13dp"/>
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:layout_weight="1">
 
         <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/text_detail"
-            android:layout_marginTop="15dp"
-            android:layout_centerHorizontal="true">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/trans_type_image"
-                android:layout_width="95dp"
-                android:layout_height="80dp"
-                android:src="@drawable/transfer_money_icon"/>
+            <RelativeLayout
+                android:id="@+id/trans_money_box"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true">
+
+                <TextView
+                    android:id="@+id/text_detail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Chi tiết giao dịch"
+                    android:textColor="@color/app_color"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="13dp"/>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/text_detail"
+                    android:layout_marginTop="15dp"
+                    android:layout_centerHorizontal="true">
+
+                    <ImageView
+                        android:id="@+id/trans_type_image"
+                        android:layout_width="95dp"
+                        android:layout_height="80dp"
+                        android:src="@drawable/transfer_money_icon"/>
+
+                    <TextView
+                        android:id="@+id/text_transfer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Chuyển tiền"
+                        android:layout_toRightOf="@id/trans_type_image"
+                        android:layout_alignTop="@+id/trans_type_image"
+                        android:textStyle="bold"
+                        android:textSize="26sp"
+                        android:layout_marginStart="10dp"/>
+
+                    <TextView
+                        android:id="@+id/amount_money"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="-1.000.000đ"
+                        android:textColor="@color/black"
+                        android:textSize="27sp"
+                        android:textStyle="bold"
+                        android:layout_below="@id/text_transfer"
+                        android:layout_alignStart="@id/text_transfer"/>
+                </RelativeLayout>
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/transfer_detail_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/trans_money_box"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="6dp">
+
+                <TextView
+                    android:id="@+id/text1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="Trạng thái"
+                    android:textColor="#D3808080"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/text2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/text1"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="Thời gian"
+                    android:textColor="#D3808080"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/text3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/text2"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="Mã giao dịch"
+                    android:textColor="#D3808080"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/text4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/text3"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="Tài khoản/thẻ"
+                    android:textColor="#D3808080"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/text5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/text4"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="Phí giao dịch"
+                    android:textColor="#D3808080"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/text5_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/text5"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="Người nhận được"
+                    android:textColor="#D3808080"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/text6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/text5_1"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="Số dư sau giao dịch"
+                    android:textColor="#D3808080"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/is_success"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/text1"
+                    android:layout_alignParentEnd="true"
+                    android:fontFamily="sans-serif-light"
+                    android:text="Thành công"
+                    android:textColor="@color/success_color"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/time_trans_detail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/text2"
+                    android:layout_alignParentEnd="true"
+                    android:fontFamily="sans-serif-thin"
+                    android:text="08:12 - 22/12/2022"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/trans_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/text3"
+                    android:layout_alignParentEnd="true"
+                    android:fontFamily="sans-serif-thin"
+                    android:text="123456789"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/wallet_card"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/text4"
+                    android:layout_alignParentEnd="true"
+                    android:fontFamily="sans-serif-thin"
+                    android:text="Ví MiMi"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/trans_fee"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/text5"
+                    android:layout_alignParentEnd="true"
+                    android:fontFamily="sans-serif-thin"
+                    android:text="5,000đ"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/actual_amount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/text5_1"
+                    android:layout_alignParentEnd="true"
+                    android:fontFamily="sans-serif-thin"
+                    android:text="950.000đ"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/balance_after_trans"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/text6"
+                    android:layout_alignParentEnd="true"
+                    android:fontFamily="sans-serif-thin"
+                    android:text="1.000.000đ"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+
+            </RelativeLayout>
 
             <TextView
-                android:id="@+id/text_transfer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Chuyển tiền"
-                android:layout_toRightOf="@id/trans_type_image"
-                android:layout_alignTop="@+id/trans_type_image"
-                android:textStyle="bold"
-                android:textSize="26sp"
-                android:layout_marginStart="10dp"/>
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:background="@color/secondary_app_color"
+                android:layout_below="@id/transfer_detail_info"
+                android:layout_marginHorizontal="8dp"/>
 
-            <TextView
-                android:id="@+id/amount_money"
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="-1.000.000đ"
-                android:textColor="@color/black"
-                android:textSize="27sp"
-                android:textStyle="bold"
-                android:layout_below="@id/text_transfer"
-                android:layout_alignStart="@id/text_transfer"/>
+                android:layout_below="@+id/divider"
+                android:id="@+id/trans_message_container"
+                android:layout_marginHorizontal="8dp">
+
+                <TextView
+                    android:id="@+id/text7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="Tên ví MiMi"
+                    android:textColor="#D3808080"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/text8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/text7"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="Số điện thoại"
+                    android:textColor="#D3808080"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/text9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/text8"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="Lời nhắn"
+                    android:textColor="@color/secondary_color_text"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/receive_account_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/text7"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="1dp"
+                    android:layout_marginBottom="-1dp"
+                    android:fontFamily="sans-serif-thin"
+                    android:text="Nguyễn Thế Hùng"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/receive_phone_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/text8"
+                    android:layout_alignParentEnd="true"
+                    android:fontFamily="sans-serif-thin"
+                    android:text="0368509455"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/trans_message"
+                    android:layout_marginTop="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/text9"
+                    android:text="Chuyển tiền mua thiết "
+                    android:textSize="22sp"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="@color/black"
+                    android:padding="10dp"
+                    android:background="@drawable/message_edit_text"/>
+
+
+
+            </RelativeLayout>
+
         </RelativeLayout>
 
-        
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/transfer_detail_info"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/trans_money_box"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="6dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="6dp">
-
-        <TextView
-            android:id="@+id/text1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:fontFamily="sans-serif-light"
-            android:text="Trạng thái"
-            android:textColor="#D3808080"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/text2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/text1"
-            android:layout_marginTop="8dp"
-            android:fontFamily="sans-serif-light"
-            android:text="Thời gian"
-            android:textColor="#D3808080"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/text3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/text2"
-            android:layout_marginTop="8dp"
-            android:fontFamily="sans-serif-light"
-            android:text="Mã giao dịch"
-            android:textColor="#D3808080"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/text4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/text3"
-            android:layout_marginTop="8dp"
-            android:fontFamily="sans-serif-light"
-            android:text="Tài khoản/thẻ"
-            android:textColor="#D3808080"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/text5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/text4"
-            android:layout_marginTop="8dp"
-            android:fontFamily="sans-serif-light"
-            android:text="Tổng phí"
-            android:textColor="#D3808080"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/text6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/text5"
-            android:layout_marginTop="8dp"
-            android:fontFamily="sans-serif-light"
-            android:text="Số dư sau giao dịch"
-            android:textColor="#D3808080"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/is_success"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@id/text1"
-            android:layout_alignParentEnd="true"
-            android:fontFamily="sans-serif-light"
-            android:text="Thành công"
-            android:textColor="@color/success_color"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/time_trans_detail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@id/text2"
-            android:layout_alignParentEnd="true"
-            android:fontFamily="sans-serif-thin"
-            android:text="08:12 - 22/12/2022"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/trans_id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@id/text3"
-            android:layout_alignParentEnd="true"
-            android:fontFamily="sans-serif-thin"
-            android:text="123456789"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/wallet_card"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@id/text4"
-            android:layout_alignParentEnd="true"
-            android:fontFamily="sans-serif-thin"
-            android:text="Ví MiMi"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/trans_fee"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@id/text5"
-            android:layout_alignParentEnd="true"
-            android:fontFamily="sans-serif-thin"
-            android:text="Miễn phí"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/balance_after_trans"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@id/text6"
-            android:layout_alignParentEnd="true"
-            android:fontFamily="sans-serif-thin"
-            android:text="1.000.000đ"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-
-    </RelativeLayout>
-
-    <TextView
-        android:id="@+id/divider"
-        android:layout_width="match_parent"
-        android:layout_height="3dp"
-        android:background="@color/secondary_app_color"
-        android:layout_below="@id/transfer_detail_info"
-        android:layout_marginHorizontal="8dp"/>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/divider"
-        android:id="@+id/trans_message_container"
-        android:layout_marginHorizontal="8dp">
-
-        <TextView
-            android:id="@+id/text7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:fontFamily="sans-serif-light"
-            android:text="Tên ví MiMi"
-            android:textColor="#D3808080"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-        <TextView
-            android:id="@+id/text8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/text7"
-            android:layout_marginTop="8dp"
-            android:fontFamily="sans-serif-light"
-            android:text="Số điện thoại"
-            android:textColor="#D3808080"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-        <TextView
-            android:id="@+id/text9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/text8"
-            android:layout_marginTop="8dp"
-            android:fontFamily="sans-serif-medium"
-            android:text="Lời nhắn"
-            android:textColor="@color/secondary_color_text"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/receive_account_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@id/text7"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="1dp"
-            android:layout_marginBottom="-1dp"
-            android:fontFamily="sans-serif-thin"
-            android:text="Nguyễn Thế Hùng"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/receive_phone_number"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@id/text8"
-            android:layout_alignParentEnd="true"
-            android:fontFamily="sans-serif-thin"
-            android:text="0368509455"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-        
-        <TextView
-            android:id="@+id/trans_message"
-            android:layout_marginTop="8dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/text9"
-            android:text="Chuyển tiền mua thiết bị"
-            android:textSize="22sp"
-            android:fontFamily="sans-serif-medium"
-            android:textColor="@color/black"
-            android:padding="10dp"
-            android:background="@drawable/message_edit_text"/>
-
-
-
-    </RelativeLayout>
+    </ScrollView>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/continue_transfering"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_marginStart="9dp"
         android:layout_marginTop="9dp"
         android:layout_marginEnd="9dp"
@@ -339,4 +376,4 @@
         android:textStyle="normal" />
 
 
-</RelativeLayout>
+</LinearLayout>
