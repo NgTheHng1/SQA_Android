@@ -3,22 +3,22 @@ package com.example.mobileappprogrammingproject;
 public class Account {
     private String phoneNum, mail;
     private int balance;
-    private User user;
+    private UserTrans user;
 
-    public Account(String phoneNum, String mail, int balance, User user) {
+    public Account(String phoneNum, String mail, int balance, UserTrans user) {
         this.phoneNum = phoneNum;
         this.mail = mail;
         this.balance = balance;
         this.user = user;
     }
 
-    public Account(String phoneNum, String mail, User user) {
+    public Account(String phoneNum, String mail, UserTrans user) {
         this.phoneNum = phoneNum;
         this.mail = mail;
         this.user = user;
     }
 
-    public Account(String phoneNum, User user) {
+    public Account(String phoneNum, UserTrans user) {
         this.phoneNum = phoneNum;
         this.user = user;
     }
@@ -50,11 +50,11 @@ public class Account {
         this.balance = balance;
     }
 
-    public User getUser() {
+    public UserTrans getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(UserTrans user) {
         this.user = user;
     }
 }

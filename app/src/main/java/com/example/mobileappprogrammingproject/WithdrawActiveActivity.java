@@ -273,17 +273,25 @@ public class WithdrawActiveActivity extends AppCompatActivity {
         @Override
         public void afterTextChanged(Editable editable) {
             EditText editText = editTextWeakReference.get();
-            if (editText == null) return;
-            String s = editable.toString();
-            if (s.isEmpty()) return;
-            editText.removeTextChangedListener(this);
-            String cleanString = s.replaceAll("\\D+", "");
-            DecimalFormat currencyFormatter = new DecimalFormat("#,###");
-            String formatted = currencyFormatter.format((double) Integer.parseInt(cleanString));
+            try{
+                if (editText == null) return;
+                String s = editable.toString();
+                if (s.isEmpty()) return;
+                editText.removeTextChangedListener(this);
+                String cleanString = s.replaceAll("\\D+", "");
+                DecimalFormat currencyFormatter = new DecimalFormat("#,###");
+                String formatted = currencyFormatter.format((double) Integer.parseInt(cleanString));
 
-            editText.setText(formatted);
-            editText.setSelection(formatted.length());
-            editText.addTextChangedListener(this);
+                editText.setText(formatted);
+                editText.setSelection(formatted.length());
+                editText.addTextChangedListener(this);
+            }catch(NumberFormatException e){
+                String str = editable.toString();
+                str = str.substring(0,str.length()-1);
+                editText.setText(str);
+                editText.setSelection(str.length());
+                editText.addTextChangedListener(this);
+            }
         }
     }
 }

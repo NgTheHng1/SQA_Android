@@ -1,45 +1,50 @@
 package com.example.mobileappprogrammingproject;
 
+
 public class User {
-    private String IdNum;
-    private String fullName, phoneNum;
+    private String sdt;
+    private String hoten;
+    private String gioitinh;
+    private int sodu;
+    private String cccd;
 
-    public User(String idNum, String fullName, String phoneNum) {
-        IdNum = idNum;
-        this.fullName = fullName;
-        this.phoneNum = phoneNum;
+    public String getSdt() {
+        return sdt;
     }
 
-    public User(String fullName, String phoneNum) {
-        this.fullName = fullName;
-        this.phoneNum = phoneNum;
+    public void setSdt(String sdt) {
+        this.sdt = sdt;
     }
 
-    public User(String fullName) {
-        this.fullName = fullName;
+    public String getHoten() {
+        return hoten;
     }
 
-    public String getIdNum() {
-        return IdNum;
+    public void setHoten(String hoten) {
+        this.hoten = hoten;
     }
 
-    public void setIdNum(String idNum) {
-        IdNum = idNum;
+    public String getGioitinh() {
+        return gioitinh;
     }
 
-    public String getFullName() {
-        return fullName;
+    public void setGioitinh(String gioitinh) {
+        this.gioitinh = gioitinh;
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
+    public long getSodu() {
+        return sodu;
     }
 
-    public String getPhoneNum() {
-        return phoneNum;
+    public void setSodu(int sodu) {
+        this.sodu = sodu;
     }
 
-    public void setPhoneNum(String phoneNum) {
-        this.phoneNum = phoneNum;
+    public String getCccd() {
+        return cccd;
+    }
+
+    public void setCccd(String cccd) {
+        this.cccd = cccd;
     }
 }

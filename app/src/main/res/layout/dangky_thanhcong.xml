@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/img_dangkythanhcong"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Chúc mừng bạn, bạn đã đăng ký thành công tài khoản ví MoMo."
+            android:textSize="20dp"
+            android:textColor="@color/black"
+            android:gravity="center"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/black"
+            android:layout_marginTop="20dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="Để có thể thanh toán dịch vụ trên MoMo, bạn cần liên kết ngân hàng hoặc cung cấp thông tin tài khoản thanh toán.    Thực hiện ngay!"
+            android:textColor="@color/textcolor"
+            android:textSize="20dp" />
+        <Button
+            android:id="@+id/btnDangnhap"
+            android:gravity="center"
+            android:textColor="@color/main"
+            android:text="Đăng nhập"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textAllCaps="false"
+            android:background="@drawable/button2nd"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="20dp"/>
+        <Button
+            android:id="@+id/btnLkbank"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:text="Cung cấp thông tin ngân hàng"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textAllCaps="false"
+            android:background="@drawable/button"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="20dp"/>
+    </LinearLayout>
+</LinearLayout>

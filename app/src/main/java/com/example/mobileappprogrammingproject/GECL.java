@@ -62,5 +62,15 @@ public class GECL {
     static public String getTokenFromSession(Context context){
         return context.getSharedPreferences("session", Context.MODE_PRIVATE).getString("token", "");
     }
+
+    static public void saveObjectToSession(String value, Context context, String objectName) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("session", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(objectName, value);
+        editor.apply();
+    }
+    static public String getObjectFromSession(Context context, String objectName){
+        return context.getSharedPreferences("session", Context.MODE_PRIVATE).getString(objectName, "");
+    }
 }
 // frtd: formatted

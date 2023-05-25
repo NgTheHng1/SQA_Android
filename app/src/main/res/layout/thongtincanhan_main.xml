@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_main">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:background="@color/main"
+        android:layout_alignParentTop="true">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="Ví của tôi"
+            android:textSize="30dp"
+            android:gravity="center"
+            android:padding="15dp"
+            android:layout_marginLeft="20dp"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"/>
+        <Button
+            android:id="@+id/btnClose"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/ic_close"/>
+    </LinearLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="57dp"
+        android:fillViewport="true">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:animateLayoutChanges="true"
+            android:scrollbars="vertical"
+            android:orientation="vertical">
+            <Button
+                android:id="@+id/btnUser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
+                android:padding="20dp"
+                android:background="@drawable/borderradius"
+                android:textAllCaps="false"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:gravity="start|center"
+                android:drawableLeft="@drawable/ic_uservi"
+                android:drawablePadding="10dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Quản lý Ví"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/black"
+                android:layout_marginTop="10dp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
+                android:padding="20dp"
+                android:background="@drawable/borderradius">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Tài khoản/Thẻ"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"/>
+                <ListView
+                    android:id="@+id/listNganhang"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:scrollbars="vertical"
+                    android:nestedScrollingEnabled="true"/>
+                <Button
+                    android:id="@+id/btnLkBank"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:padding="10dp"
+                    android:background="@drawable/linemaincolor"
+                    android:text="Thêm ngân hàng"
+                    android:textAllCaps="false"
+                    android:textSize="20sp"
+                    android:gravity="start|center"
+                    android:drawableLeft="@drawable/ic_bank"
+                    android:drawablePadding="10dp"/>
+<!--                <Button-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:padding="10dp"-->
+<!--                    android:text="Đổi mật khẩu"-->
+<!--                    android:background="@drawable/linemaincolor"-->
+<!--                    android:textAllCaps="false"-->
+<!--                    android:textSize="20sp"-->
+<!--                    android:gravity="start|center"-->
+<!--                    android:drawableLeft="@drawable/ic_setting"-->
+<!--                    android:drawablePadding="10dp"/>-->
+                <Button
+                    android:id="@+id/btnDangxuat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:padding="10dp"
+                    android:text="Đăng xuất"
+                    android:background="@drawable/linemaincolor"
+                    android:textAllCaps="false"
+                    android:textSize="20sp"
+                    android:gravity="start|center"
+                    android:drawableStart="@drawable/ic_exit"
+                    android:drawablePadding="10dp"/>
+            </LinearLayout>
+<!--            <Button-->
+<!--                android:layout_gravity="center"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:text="Nạp tiền"-->
+<!--                android:textSize="20sp"-->
+<!--                android:textStyle="bold"-->
+<!--                android:textAllCaps="false"-->
+<!--                android:layout_marginLeft="20dp"-->
+<!--                android:layout_marginRight="20dp"-->
+<!--                android:layout_marginTop="20dp"-->
+<!--                android:layout_marginBottom="10dp"-->
+<!--                android:background="@drawable/button"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="60dp"/>-->
+        </LinearLayout>
+    </ScrollView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:layout_alignParentBottom="true"
+        android:translationZ="1dp"
+        android:layout_marginTop="-57dp">
+
+        <LinearLayout
+            android:id="@+id/home_page_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1">
+
+            <ImageView
+                android:layout_width="65dp"
+                android:layout_height="4dp"
+                android:background="@color/secondary_color_text"
+                android:layout_gravity="center"/>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/home_page_icon"
+                android:background="@color/white"
+                android:layout_gravity="center"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TRANG CHỦ"
+                android:layout_gravity="center"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/his_trans_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1">
+
+            <ImageView
+                android:layout_width="65dp"
+                android:layout_height="4dp"
+                android:background="@color/secondary_color_text"
+                android:layout_gravity="center"/>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:src="@drawable/history_transaction"
+                android:background="@color/white"
+                android:layout_gravity="center"
+                android:scaleType="fitCenter"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="LỊCH SỬ GD"
+                android:layout_gravity="center"
+                android:layout_marginTop="-6dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/MyValletlayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1">
+
+            <ImageView
+                android:layout_width="65dp"
+                android:layout_height="4dp"
+                android:background="#D82D8B"
+                android:layout_gravity="center"/>
+
+            <ImageButton
+                android:layout_width="37dp"
+                android:layout_height="37dp"
+                android:src="@drawable/user_icon_clicked"
+                android:background="@color/white"
+                android:layout_gravity="center"
+                android:scaleType="fitCenter"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="VÍ CỦA TÔI"
+                android:layout_gravity="center"
+                android:layout_marginTop="-3dp"
+                android:textColor="@color/app_color"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

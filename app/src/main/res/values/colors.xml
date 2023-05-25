@@ -20,5 +20,10 @@
     <color name="start_gradient">#FF93CD</color>
     <color name="end_gradient">#B30A71</color>
     <color name="background_light_gray">#F1F1F1</color>
+    <color name="textblue">#096DD9</color>
+    <color name="main">#D82D88</color>
+    <color name="background2nd">#39D82D88</color>
+    <color name="textcolor">#686868</color>
+    <color name="background_main">#ECECEC</color>
 
 </resources>

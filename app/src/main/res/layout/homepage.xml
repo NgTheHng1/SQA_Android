@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#d82d8b">
+
+    <LinearLayout
+        android:id="@+id/layout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="15dp"
+        android:layout_alignParentTop="true">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="5dp"
+            android:layout_weight="20"
+            android:background="@drawable/primary_input"
+            android:drawableStart="@drawable/search_icon"
+            android:inputType="text"
+            android:paddingStart="6dp"
+            android:paddingTop="3dp"/>
+
+        <ImageButton
+            android:id="@+id/btnNoti"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/noti_icon"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="6dp"
+            android:background="#d82d8b"
+            android:contentDescription="Notification"/>
+
+        <ImageButton
+            android:id="@+id/imageButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/user_icon"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="4dp"
+            android:background="#d82d8b"
+            android:contentDescription="User information"/>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@id/layout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout1">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:text="Xin chào,"
+            android:textColor="@color/white"
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/user_name"
+            android:layout_below="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="45dp"
+            android:gravity="center"
+            android:text="NGUYEN THE HUNG"
+            android:textColor="@color/white"
+            android:textSize="22sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layout2">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="#DADADA"
+            android:layout_marginTop="50dp"/>
+
+        <RelativeLayout
+            android:id="@+id/balance_info"
+            android:layout_width="match_parent"
+            android:background="@drawable/white_container"
+            android:layout_height="70dp">
+
+            <TextView
+                android:id="@+id/wallet_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ví của tôi"
+                android:textSize="16sp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"/>
+
+            <ImageButton
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="18dp"
+                android:layout_marginStart="3dp"
+                android:layout_marginTop="13dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_toRightOf="@+id/wallet_text"
+                android:adjustViewBounds="true"
+                android:background="#fff"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/no_eye"/>
+
+            <TextView
+                android:id="@+id/balance"
+                android:layout_below="@id/wallet_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="************"
+                android:textSize="18sp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="7dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Quản lý tài khoản"
+                android:layout_alignParentRight="true"
+                android:textSize="16sp"
+                android:layout_centerVertical="true"
+                android:drawableEnd="@drawable/next_arrow"
+                android:layout_marginRight="3dp"/>
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout4"
+        android:layout_below="@+id/layout3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="-35dp"
+        android:background="@drawable/white_container">
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="15dp"
+            android:text="Chức năng chính"
+            android:textColor="@color/black"
+            android:textSize="19sp" />
+
+        <GridLayout
+            android:id="@+id/main_functions"
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:layout_below="@id/textView3"
+            android:layout_marginTop="7dp"
+            android:background="@color/white"
+            android:columnCount="3"
+            android:rowCount="1">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/NaptienLayout"
+                android:layout_width="52dp"
+                android:layout_height="wrap_content"
+                android:layout_row="0"
+                android:layout_rowWeight="1"
+                android:layout_column="0"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill"
+                android:layout_margin="7dp"
+                app:cardCornerRadius="7dp"
+                app:cardElevation="7dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|center_horizontal"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/add_money" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nạp tiền"
+                        android:textAlignment="center"
+                        android:textSize="16sp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="0"
+                android:layout_rowWeight="1"
+                android:layout_column="1"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill"
+                android:layout_margin="7dp"
+                app:cardCornerRadius="7dp"
+                app:cardElevation="7dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|center_horizontal"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/withdraw_money" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Rút tiền"
+                        android:textAlignment="center"
+                        android:textSize="16sp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/ChuyentienLayout"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_row="0"
+                android:layout_rowWeight="1"
+                android:layout_column="2"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill"
+                android:layout_margin="7dp"
+                app:cardCornerRadius="7dp"
+                app:cardElevation="7dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="15dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/exchange_arrow" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Chuyển tiền"
+                        android:textAlignment="center"
+                        android:textSize="16sp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </GridLayout>
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_below="@id/main_functions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="10dp"
+            android:text="Có thể bạn quan tâm"
+            android:textColor="@color/black"
+            android:textSize="19sp" />
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView4"
+            android:layout_marginTop="9dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/momo_sale_1"
+                    android:layout_marginStart="10dp"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/momo_sale_2"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"/>
+            </LinearLayout>
+        </HorizontalScrollView>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="@color/white"
+        android:layout_alignParentBottom="true">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1">
+
+            <ImageView
+                android:layout_width="65dp"
+                android:layout_height="4dp"
+                android:background="#D82D8B"
+                android:layout_gravity="center"/>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/home_page_icon"
+                android:background="@color/white"
+                android:layout_gravity="center"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="29dp"
+                android:layout_gravity="center"
+                android:text="TRANG CHỦ" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/his_trans_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1">
+
+            <ImageView
+                android:layout_width="65dp"
+                android:layout_height="4dp"
+                android:background="@color/secondary_color_text"
+                android:layout_gravity="center"/>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:src="@drawable/history_transaction"
+                android:background="@color/white"
+                android:layout_gravity="center"
+                android:scaleType="fitCenter"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="LỊCH SỬ GD"
+                android:layout_gravity="center"
+                android:layout_marginTop="-6dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/MyValletlayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1">
+
+            <ImageView
+                android:layout_width="65dp"
+                android:layout_height="4dp"
+                android:background="@color/secondary_color_text"
+                android:layout_gravity="center"/>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/user_icon_2"
+                android:background="@color/white"
+                android:layout_gravity="center"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="VÍ CỦA TÔI"
+                android:layout_gravity="center"
+                android:layout_marginTop="-3dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

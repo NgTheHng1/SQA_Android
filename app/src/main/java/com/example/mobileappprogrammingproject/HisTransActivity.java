@@ -3,10 +3,13 @@ package com.example.mobileappprogrammingproject;
 import static com.example.mobileappprogrammingproject.Transactions.getTransByJSONObj;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.app.ActivityOptionsCompat;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -45,7 +48,7 @@ public class    HisTransActivity extends AppCompatActivity {;
     EditText edtTransSearch;
     RecyclerView recyclerView;
     List<List<Transactions>> listTrans;
-    int curBalance = 1000000;
+    int curBalance;
     String token;
     RetrofitClient.RetrofitInterface apiService;
     @Override
@@ -66,7 +69,10 @@ public class    HisTransActivity extends AppCompatActivity {;
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+        finish();
+        Intent intent = new Intent(HisTransActivity.this, HomePageActivity.class);
+        ActivityOptionsCompat options = ActivityOptionsCompat.makeCustomAnimation(HisTransActivity.this, R.anim.slide_in_left, R.anim.slide_out_right);
+        ActivityCompat.startActivity(HisTransActivity.this, intent, options.toBundle());
     }
 
     private void getData_RenderView(){
@@ -166,6 +172,30 @@ public class    HisTransActivity extends AppCompatActivity {;
         };
 
         Promise.resolve()
+                //get balance of user
+                .then((action, data) -> {
+                    Call<String> call = RetrofitClient.getRetroInterface().getBalanceByUser(token);
+                    call.enqueue(new Callback<String>() {
+                        @Override
+                        public void onResponse(Call<String> call, Response<String> response) {
+                            String responseStr = response.body();
+                            GECL.print(responseStr);
+                            try {
+                                JSONObject jsonObj = new JSONObject(responseStr);
+                                curBalance = jsonObj.getJSONObject("balance").getInt("SoDu");
+                            } catch (JSONException e) {
+                                throw new RuntimeException(e);
+                            }
+                            action.resolve();
+                        }
+
+                        @Override
+                        public void onFailure(Call<String> call, Throwable t) {
+                            GECL.makeToast("Lỗi", HisTransActivity.this);
+                            action.reject();
+                        }
+                    });
+                })
                 .then(getPaidBillListFunc, rejectFunc)
                 .then(getTransListFunc, rejectFunc)
                 .then(renderView)
@@ -225,8 +255,9 @@ public class    HisTransActivity extends AppCompatActivity {;
         for (int i = -1; i < userInfoAct.getChildCount(); i++) {
             View view = i != -1 ?  userInfoAct.getChildAt(i) : userInfoAct;
             view.setOnClickListener(view4 -> {
-//                Intent movePage = new Intent(HomePageActivity.this, HisTransActivity.class);
-//                startActivity(movePage);
+                Intent intent = new Intent(HisTransActivity.this, thongtincanhan_main.class);
+                ActivityOptionsCompat options = ActivityOptionsCompat.makeCustomAnimation(HisTransActivity.this, R.anim.slide_in_right, R.anim.slide_out_left);
+                ActivityCompat.startActivity(HisTransActivity.this, intent, options.toBundle());
             });
         }
     }

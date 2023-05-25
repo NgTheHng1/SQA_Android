@@ -26,7 +26,7 @@ import retrofit2.Response;
 
 public class HomePageActivity extends AppCompatActivity {
     LinearLayout hisTransAct, userInfoAct;
-    CardView cardWithdraw, cardPayBill;
+    CardView cardWithdraw, cardPayBill, cardDeposit, cardTransfer;
     String token;
     TextView tvUserInfo, tvBalance, tvUserName;
     ImageButton imgBtnUserInfo, imgBtnBalanceStatus;
@@ -35,15 +35,16 @@ public class HomePageActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.home_page);
+
         getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.app_color));
-
-
-//        GECL.saveTokenToSession(getIntent().getBundleExtra("bundle").getString("token"), this);
-        GECL.saveTokenToSession("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTRFQiOiIwOTg1NzU4MzMzIiwiUGFzc3dvcmQiOiIzNDU0NTQiLCJpYXQiOjE2ODQ5MDUzNjUsImV4cCI6MTY4NDk5MTc2NX0.YQN1u43eUvXkZ7kGfHHyQjR-uhP6eRkZle0fVLcMvHQ",
-                this);
         token = GECL.getTokenFromSession(this);
 
-        setContentView(R.layout.home_page);
+        GECL.saveTokenToSession("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTRFQiOiIwOTg1NzU4MzMzIiwiUGFzc3dvcmQiOiIxMjM0NTYiLCJpYXQiOjE2ODQ5ODgwODgsImV4cCI6MTY4NTA3NDQ4OH0.O2quwDMomZ8gYO0Aw5Tp-3ndtQVUFxGaup4PiM590Lk", this);
+        GECL.saveObjectToSession("NGUYỄN VĂN THANH", this, "hoten");
+        GECL.saveObjectToSession("1000000", this, "sodu");
+        GECL.saveObjectToSession("0985758333", this, "sdt");
+
         setControl();
         setEvent();
         Promise.resolve()
@@ -106,6 +107,8 @@ public class HomePageActivity extends AppCompatActivity {
         tvBalance = findViewById(R.id.balance);
         imgBtnBalanceStatus = findViewById(R.id.isBalanceHidden);
         tvUserName = findViewById(R.id.user_name);
+        cardDeposit = findViewById(R.id.deposit);
+        cardTransfer = findViewById(R.id.transfer);
     }
     private void setEvent(){
         //History transaction activity
@@ -137,21 +140,40 @@ public class HomePageActivity extends AppCompatActivity {
             });
         }
 
+        //Deposit activity
+        for (int i = -1; i < cardDeposit.getChildCount(); i++) {
+            View view = i != -1 ?  cardDeposit.getChildAt(i) : cardDeposit;
+            view.setOnClickListener(view3 -> {
+                Intent movePage = new Intent(HomePageActivity.this, naptien_trangchu.class);
+                startActivity(movePage);
+            });
+        }
+
+        //Transfer activity
+        for (int i = -1; i < cardTransfer.getChildCount(); i++) {
+            View view = i != -1 ?  cardTransfer.getChildAt(i) : cardTransfer;
+            view.setOnClickListener(view3 -> {
+                Intent movePage = new Intent(HomePageActivity.this, chuyentien_trangchu.class);
+                startActivity(movePage);
+            });
+        }
+
         //User info activity
         for (int i = -1; i < userInfoAct.getChildCount(); i++) {
             View view = i != -1 ?  userInfoAct.getChildAt(i) : userInfoAct;
             view.setOnClickListener(view4 -> {
-//                Intent movePage = new Intent(HomePageActivity.this, HisTransActivity.class);
-//                startActivity(movePage);
+                Intent intent = new Intent(HomePageActivity.this, thongtincanhan_main.class);
+                ActivityOptionsCompat options = ActivityOptionsCompat.makeCustomAnimation(HomePageActivity.this, R.anim.slide_in_right, R.anim.slide_out_left);
+                ActivityCompat.startActivity(HomePageActivity.this, intent, options.toBundle());
             });
         }
         imgBtnUserInfo.setOnClickListener(view -> {
-//                Intent movePage = new Intent(HomePageActivity.this, HisTransActivity.class);
-//                startActivity(movePage);
+                Intent movePage = new Intent(HomePageActivity.this, thongtincanhan_main.class);
+                startActivity(movePage);
         });
         tvUserInfo.setOnClickListener(view -> {
-//                Intent movePage = new Intent(HomePageActivity.this, HisTransActivity.class);
-//                startActivity(movePage);
+                Intent movePage = new Intent(HomePageActivity.this, thongtincanhan_main.class);
+                startActivity(movePage);
         });
 
         imgBtnBalanceStatus.setOnClickListener(new View.OnClickListener() {

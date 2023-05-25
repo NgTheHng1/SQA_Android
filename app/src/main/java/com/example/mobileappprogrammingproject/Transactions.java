@@ -154,7 +154,7 @@ public class Transactions {
             int balanceAfter = jsonObj.getInt("balanceAfter");
             int transTypeId = transType.equals("Receive") ? Transactions.TRANSFER_RECEIVE : Transactions.TRANSFER_SEND;
 
-            return new TransferTrans(transId, amount, fee, dateTime, balanceAfter, new Account(phoneNumOppo, new User(oppoName)), transTypeId, message);
+            return new TransferTrans(transId, amount, fee, dateTime, balanceAfter, new Account(phoneNumOppo, new UserTrans(oppoName)), transTypeId, message);
         }
 
 
