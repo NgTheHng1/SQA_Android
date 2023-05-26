@@ -6,12 +6,14 @@ import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 public class lienket_nganhang_thanhcong extends AppCompatActivity {
     Button btnBackHomePage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.app_color));
         setContentView(R.layout.lienket_nganhang_thanhcong);
 
         Intent intent = getIntent();

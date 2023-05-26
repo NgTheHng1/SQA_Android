@@ -4,37 +4,36 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <RelativeLayout
-        android:id="@+id/navbar"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_alignParentTop="true"
-        android:background="@color/app_color"
-        android:paddingHorizontal="10dp">
+<!--    <RelativeLayout-->
+<!--        android:id="@+id/navbar"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="60dp"-->
+<!--        android:layout_alignParentTop="true"-->
+<!--        android:background="@color/app_color"-->
+<!--        android:paddingHorizontal="10dp">-->
 
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:background="@android:color/transparent"
-            android:src="@drawable/arrow_back" />
+<!--        <ImageButton-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_centerVertical="true"-->
+<!--            android:background="@android:color/transparent"-->
+<!--            android:src="@drawable/arrow_back" />-->
 
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:background="@android:color/transparent"
-            android:src="@drawable/close_icon"
-            android:layout_alignParentEnd="true"/>
+<!--        <ImageButton-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_centerVertical="true"-->
+<!--            android:background="@android:color/transparent"-->
+<!--            android:src="@drawable/close_icon"-->
+<!--            android:layout_alignParentEnd="true"/>-->
 
 
-    </RelativeLayout>
+<!--    </RelativeLayout>-->
 
     <RelativeLayout
         android:id="@+id/trans_money_box"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/navbar">
+        android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/text_xac_nhan"

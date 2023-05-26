@@ -52,7 +52,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/text_xac_nhan"
-            android:src="@drawable/lock_icon"
+            android:src="@drawable/lock_icon_new_3"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"/>
 
@@ -100,9 +100,10 @@
                 android:id="@+id/trans_money"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="7dp"
                 android:layout_alignBottom="@id/text2"
                 android:layout_alignParentEnd="true"
+                android:layout_marginStart="7dp"
+                android:layout_marginBottom="0dp"
                 android:text="1.000.000đ"
                 android:textColor="@color/black"
                 android:textSize="20sp"

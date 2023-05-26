@@ -12,6 +12,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
+import android.widget.AutoCompleteTextView;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -31,22 +32,23 @@ public class HomePageActivity extends AppCompatActivity {
     TextView tvUserInfo, tvBalance, tvUserName;
     ImageButton imgBtnUserInfo, imgBtnBalanceStatus;
     String curBalance;
+    AutoCompleteTextView inputSearch;
     boolean isBalanceHiden = true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.home_page);
-
         getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.app_color));
+        setContentView(R.layout.home_page);
         token = GECL.getTokenFromSession(this);
 
-        GECL.saveTokenToSession("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTRFQiOiIwOTg1NzU4MzMzIiwiUGFzc3dvcmQiOiIxMjM0NTYiLCJpYXQiOjE2ODQ5ODgwODgsImV4cCI6MTY4NTA3NDQ4OH0.O2quwDMomZ8gYO0Aw5Tp-3ndtQVUFxGaup4PiM590Lk", this);
+        GECL.saveTokenToSession("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTRFQiOiIwOTg1NzU4MzMzIiwiUGFzc3dvcmQiOiIxMjM0NTYiLCJpYXQiOjE2ODUwNzk4MDgsImV4cCI6MTY4NTE2NjIwOH0.c-yD0pSl9xOvTz1b9mgVw04fbTz5GYiH8CCGDpOzaX4", this);
         GECL.saveObjectToSession("NGUYỄN VĂN THANH", this, "hoten");
         GECL.saveObjectToSession("1000000", this, "sodu");
         GECL.saveObjectToSession("0985758333", this, "sdt");
 
         setControl();
         setEvent();
+        renderView();
         Promise.resolve()
                 //get user real name
                 .then((action, data) -> {
@@ -97,6 +99,26 @@ public class HomePageActivity extends AppCompatActivity {
                 .start();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        inputSearch.setText("");
+        inputSearch.clearFocus();
+    }
+
+    private void renderView() {
+        String[] suggestions = new String[]{
+                "Chuyển tiền",
+                "Nạp tiền",
+                "Rút tiền",
+                "Thanh toán hoá đơn"
+        };
+        ItemSuggestAdapter adapter = new ItemSuggestAdapter(HomePageActivity.this, suggestions);
+        inputSearch.setAdapter(adapter);
+    }
+
+
+
     private void setControl(){
         hisTransAct = findViewById(R.id.his_trans_layout);
         userInfoAct = findViewById(R.id.user_info_layout);
@@ -109,6 +131,7 @@ public class HomePageActivity extends AppCompatActivity {
         tvUserName = findViewById(R.id.user_name);
         cardDeposit = findViewById(R.id.deposit);
         cardTransfer = findViewById(R.id.transfer);
+        inputSearch = findViewById(R.id.input_search);
     }
     private void setEvent(){
         //History transaction activity

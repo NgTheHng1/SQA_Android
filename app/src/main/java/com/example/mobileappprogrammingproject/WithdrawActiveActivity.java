@@ -14,6 +14,7 @@ import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -48,6 +49,7 @@ import retrofit2.Response;
 public class WithdrawActiveActivity extends AppCompatActivity {
     TextView tvBalance;
     Button btnConfrmTrans;
+    ImageButton imgBtnClose;
     Bundle bundle;
     EditText edtText;
     RecyclerView recyBankList;
@@ -176,6 +178,7 @@ public class WithdrawActiveActivity extends AppCompatActivity {
         btnConfrmTrans = findViewById(R.id.confirm_trans);
         edtText = findViewById(R.id.withdraw_edit_text);
         tvBalance = findViewById(R.id.balance_money);
+        imgBtnClose = findViewById(R.id.close_icon);
     }
 
     private void setEvent() {
@@ -208,6 +211,7 @@ public class WithdrawActiveActivity extends AppCompatActivity {
                 }
             }
         });
+        GECL.setCloseBtnEvent(this, imgBtnClose);
     }
     private void hideKeyboard(Activity activity) {
         View view = activity.findViewById(android.R.id.content);

@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:text="Liên kết ngân hàng"
-            android:textSize="30dp"
+            android:textSize="30sp"
             android:gravity="center"
             android:padding="15dp"
             android:layout_marginLeft="20dp"
@@ -41,7 +41,7 @@
                 android:layout_height="wrap_content"
                 android:text="Ngân hàng"
                 android:textStyle="bold"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:textColor="@color/black"/>
             <Spinner
                 android:id="@+id/spinnerNganHang"
@@ -53,7 +53,7 @@
                 android:layout_height="wrap_content"
                 android:text="Số thẻ"
                 android:textStyle="bold"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:textColor="@color/black"
                 android:layout_marginTop="10dp"/>
             <EditText
@@ -70,7 +70,7 @@
                 android:layout_height="wrap_content"
                 android:text="Chủ thẻ"
                 android:textStyle="bold"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:textColor="@color/black"
                 android:layout_marginTop="10dp"/>
             <EditText
@@ -87,7 +87,7 @@
                 android:layout_height="wrap_content"
                 android:text="Ngày phát hành"
                 android:textStyle="bold"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:textColor="@color/black"
                 android:layout_marginTop="10dp"/>
             <LinearLayout
@@ -121,7 +121,7 @@
                 android:layout_height="wrap_content"
                 android:text="CCCD"
                 android:textStyle="bold"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:textColor="@color/black"
                 android:layout_marginTop="10dp"/>
             <EditText
@@ -139,7 +139,7 @@
                 android:layout_gravity="center"
                 android:textColor="@color/white"
                 android:text="Xác nhận"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 android:textAllCaps="false"
                 android:layout_marginTop="20dp"

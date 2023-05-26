@@ -2,11 +2,15 @@ package com.example.mobileappprogrammingproject;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ImageButton;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -71,6 +75,17 @@ public class GECL {
     }
     static public String getObjectFromSession(Context context, String objectName){
         return context.getSharedPreferences("session", Context.MODE_PRIVATE).getString(objectName, "");
+    }
+    static public void moveHomePage(AppCompatActivity activity){
+//        context.startActivity(new Intent(activity, HomePageActivity.class));
+        activity.startActivity(new Intent(activity, HomePageActivity.class));
+        activity.finish();
+    }
+    static public void setCloseBtnEvent(AppCompatActivity activity, ImageButton imgBtn){
+        imgBtn.setOnClickListener(view -> {
+            activity.startActivity(new Intent(activity, HomePageActivity.class));
+            activity.finish();
+        });
     }
 }
 // frtd: formatted

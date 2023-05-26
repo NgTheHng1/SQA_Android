@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.example.mobileappprogrammingproject.APIResult.GetAllBanksResult;
 import com.example.mobileappprogrammingproject.APIResult.LinkBankResult;
@@ -45,6 +46,7 @@ public class lienketNganHang extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.app_color));
         setContentView(com.example.mobileappprogrammingproject.R.layout.lienket_nganhang);  Intent intent = getIntent();
         String token = GECL.getObjectFromSession(this, "token");
         String hoten = GECL.getObjectFromSession(this, "hoten");

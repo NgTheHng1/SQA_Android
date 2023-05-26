@@ -76,12 +76,12 @@
                 <TextView
                     android:id="@+id/com_name"
                     android:layout_width="match_parent"
+                    android:gravity="end"
                     android:layout_height="wrap_content"
                     android:text="Điện lực Hồ Chí Minh"
                     android:fontFamily="sans-serif-medium"
                     android:textStyle="normal"
                     android:textSize="19sp"
-                    android:gravity="end"
                     android:textColor="@color/black"
                     />
 

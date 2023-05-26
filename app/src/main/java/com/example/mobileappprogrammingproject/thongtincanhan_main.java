@@ -16,6 +16,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.ActivityOptionsCompat;
+import androidx.core.content.ContextCompat;
 
 import com.example.mobileappprogrammingproject.APIResult.GetCardBankbyUserResult;
 import com.example.mobileappprogrammingproject.APIResult.GetUserbyTokenResult;
@@ -44,6 +45,7 @@ public class thongtincanhan_main extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.app_color));
         setContentView(R.layout.thongtincanhan_main);
         listNganhang = findViewById(R.id.listNganhang);
         hisTransLayout = findViewById(R.id.his_trans_layout);

@@ -21,7 +21,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
                 android:text="Thông tin cá nhân"
-                android:textSize="30dp"
+                android:textSize="30sp"
                 android:gravity="center"
                 android:padding="15dp"
                 android:layout_marginLeft="20dp"
@@ -50,7 +50,7 @@
                     android:layout_height="wrap_content"
                     android:text="Thông tin liên hệ"
                     android:textStyle="bold"
-                    android:textSize="20dp"
+                    android:textSize="20sp"
                     android:textColor="@color/black"/>
             </LinearLayout>
             <LinearLayout
@@ -63,13 +63,13 @@
                     android:layout_height="wrap_content"
                     android:text="Email:"
                     android:textStyle="italic"
-                    android:textSize="20dp"
+                    android:textSize="20sp"
                     android:textColor="@color/textcolor"/>
                 <EditText
                     android:id="@+id/txtEmail"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:textSize="20dp"
+                    android:textSize="20sp"
                     android:paddingLeft="10dp"
                     android:background="@drawable/edittextborder"
                     android:gravity="start|center"
@@ -81,7 +81,7 @@
             android:layout_gravity="center"
             android:textColor="@color/white"
             android:text="Cập nhật"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:textStyle="bold"
             android:textAllCaps="false"
             android:layout_marginLeft="20dp"

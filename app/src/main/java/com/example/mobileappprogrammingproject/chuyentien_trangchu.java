@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.example.mobileappprogrammingproject.APIResult.GetAllUserTransferedResult;
 import com.example.mobileappprogrammingproject.ObjectJSON.UserJSONObject;
@@ -39,6 +40,7 @@ public class chuyentien_trangchu extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.app_color));
         setContentView(R.layout.chuyentien_trangchu);  Intent intent = getIntent();
         String token = GECL.getTokenFromSession(this);
         String adminHoten = GECL.getObjectFromSession(this, "hoten");

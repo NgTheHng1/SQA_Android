@@ -24,7 +24,7 @@ import retrofit2.Response;
 public class ConfirmWithdrawActivity extends AppCompatActivity {
     boolean isActivityPaused = false;
     Button btnConfrmTrans;
-    TextView bankWithdraw, moneyWithdraw, totalMoney;
+    TextView bankWithdraw, moneyWithdraw, totalMoney, bankAccount;
     String token;
     String bankAcc, amount;
 
@@ -32,7 +32,7 @@ public class ConfirmWithdrawActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.app_color));
-        setContentView(R.layout.trans_confirm);
+        setContentView(R.layout.trans_confirm_new);
         setControl();
         getData();
         setEvent();
@@ -49,6 +49,8 @@ public class ConfirmWithdrawActivity extends AppCompatActivity {
         moneyWithdraw.setText(formatCurrency(amount, ""));
         totalMoney.setText(formatCurrency(amount, ""));
         bankWithdraw.setText(bankName);
+        bankAccount.setText(bankAcc);
+
 
         this.bankAcc = bankAcc;
         this.amount = String.valueOf(amount);
@@ -75,6 +77,7 @@ public class ConfirmWithdrawActivity extends AppCompatActivity {
         bankWithdraw = findViewById(R.id.bank_withdraw);
         moneyWithdraw = findViewById(R.id.trans_money);
         totalMoney = findViewById(R.id.total_trans_money);
+        bankAccount = findViewById(R.id.bank_account);
     }
 
     private void setEvent(){

@@ -3,6 +3,7 @@ package com.example.mobileappprogrammingproject;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -28,6 +29,7 @@ import retrofit2.Response;
 
 public class PayBillViewActivity extends AppCompatActivity {
     TextView tvBalance, tvConDeposit;
+    ImageButton imgBtnClose;
     Button btnYetPaid, btnPaid;
     List<BillTrans> listPaidBill, listBill;
     RecyclerView recyclerView;
@@ -213,6 +215,7 @@ public class PayBillViewActivity extends AppCompatActivity {
             }
         });
 
+        GECL.setCloseBtnEvent(this, imgBtnClose);
     }
 
     private void setControl() {
@@ -222,6 +225,7 @@ public class PayBillViewActivity extends AppCompatActivity {
         btnPaid = findViewById(R.id.btn_paid);
         recyclerView = findViewById(R.id.recycler_view);
         forEmpty = findViewById(R.id.text_for_empty);
+        imgBtnClose = findViewById(R.id.close_icon);
     }
 
     @Override

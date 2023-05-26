@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.example.mobileappprogrammingproject.APIResult.GetUserbyTokenResult;
 import com.example.mobileappprogrammingproject.ObjectJSON.UserJSONObject;
@@ -38,6 +39,7 @@ public class thongtincanhan_chitiet extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.app_color));
         setContentView(R.layout.thongtincanhan_chitiet);  txtHoten = findViewById(R.id.txtHoten);
         txtGioitinh = findViewById(R.id.txtGioitinh);
         txtCCCD = findViewById(R.id.txtCCCD);

@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:text="Quên mật khẩu?"
-            android:textSize="30dp"
+            android:textSize="30sp"
             android:gravity="center"
             android:padding="15dp"
             android:layout_marginLeft="15dp"
@@ -38,14 +38,14 @@
             android:layout_height="wrap_content"
             android:text="ViDienTu xin chào!"
             android:textStyle="bold"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:textColor="@color/black"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Kiểm tra tài khoản email của bạn để lấy mật khẩu mới"
             android:textStyle="italic"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:textColor="@color/textcolor"
             android:layout_marginTop="10dp"/>
     </LinearLayout>
@@ -60,7 +60,7 @@
             android:layout_height="wrap_content"
             android:text="Vui lòng nhập mã:"
             android:textStyle="italic"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:textColor="@color/textcolor"
             android:layout_marginTop="10dp"/>
         <EditText
@@ -75,7 +75,7 @@
             android:layout_gravity="center"
             android:textColor="@color/white"
             android:text="Xác nhận"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:textStyle="bold"
             android:textAllCaps="false"
             android:layout_marginTop="40dp"

@@ -44,7 +44,6 @@ public class ListBankViewAdapter extends RecyclerView.Adapter<ListBankViewAdapte
         String feeStr = String.format("Miễn phí", listBank.get(position).getBankFee());
         holder.tvBankFee.setText(feeStr);
 
-//        holder.cbBankSelect.setChecked(position == 0);
         holder.itemContainer.setBackgroundColor(ContextCompat.getColor(context,
                 checkedPosition == position ? R.color.white : R.color.unchecked));
 

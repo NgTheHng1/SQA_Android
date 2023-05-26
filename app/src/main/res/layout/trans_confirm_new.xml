@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/trans_confirm"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/trans_money_box"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true">
+
+        <TextView
+            android:id="@+id/text_xac_nhan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="13dp"
+            android:text="Xác nhận thanh toán"
+            android:textColor="@color/app_color"
+            android:textSize="28sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/lock_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text_xac_nhan"
+            android:src="@drawable/lock_icon_new_3"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"/>
+
+        <LinearLayout
+            android:id="@+id/detail_confirm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lock_icon"
+            android:layout_marginTop="15dp"
+            android:paddingHorizontal="20dp"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp">
+
+                <TextView
+                    android:id="@+id/text1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-thin"
+                    android:text="Rút về NH liên kết:"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/bank_withdraw"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:gravity="end"
+                    android:layout_marginStart="7dp"
+                    android:layout_alignBottom="@id/text1"
+                    android:layout_alignParentEnd="true"
+                    android:text="Agribank"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-thin"
+                    android:text="Số tiền rút"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/trans_money"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:gravity="end"
+                    android:layout_marginStart="7dp"
+                    android:text="1,000,000đ"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-thin"
+                    android:text="Số tài khoản"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/bank_account"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:gravity="end"
+                    android:layout_marginStart="7dp"
+                    android:text="8504985034"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:background="@color/secondary_app_color"
+                android:layout_below="@id/text2"
+                android:layout_marginTop="20dp"
+                android:layout_marginHorizontal="0dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-thin"
+                    android:text="Phí giao dịch"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/is_free"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="7dp"
+                    android:gravity="end"
+                    android:text="Miễn phí"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/transfer_detail_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/trans_money_box"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="6dp">
+
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/text4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/confirm_trans"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="12dp"
+        android:fontFamily="sans-serif-thin"
+        android:text="Số tiền rút về NH:"
+        android:textSize="22sp"
+        android:textStyle="bold"/>
+    <TextView
+        android:id="@+id/total_trans_money"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/confirm_trans"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="-3dp"
+        android:layout_alignParentEnd="true"
+        android:text="1.000.000đ"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/divider_2"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@color/secondary_app_color"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_above="@id/text4"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="0dp"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/confirm_trans"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginEnd="9dp"
+        android:layout_marginBottom="9dp"
+        android:background="@drawable/submit_button"
+        android:text="Xác nhận"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="normal" />
+
+
+</RelativeLayout>

@@ -77,6 +77,16 @@ public class RetrofitClient {
         @POST("/api/v1/account/get-user-balance")
         Call<String> getBalanceByUser(@Field("token") String authToken);
 
+        @FormUrlEncoded
+        @POST("/api/v1/transaction/get-latest-trans_info")
+        Call<String> getLatestTransInfo(@Field("token") String authToken);
+
+
+        @GET("/api/v1/bank/get-bank-fees")
+        Call<String> getBankFees();
+
+
+
         @POST("/api/v1/account/login")
         Call<LoginResult> executeLogin(@Body HashMap<String, String> map);
         @POST("/api/v1/account/sign-up")

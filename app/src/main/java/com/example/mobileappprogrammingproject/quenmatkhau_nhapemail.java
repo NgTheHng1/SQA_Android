@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.example.mobileappprogrammingproject.APIResult.ForgetpasswordResult;
 
@@ -30,6 +31,7 @@ public class quenmatkhau_nhapemail extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.app_color));
         setContentView(R.layout.quenmatkhau_nhapemail);
         btnAccept = findViewById(R.id.btnAccept);
         btnClose = findViewById(R.id.btnClose);

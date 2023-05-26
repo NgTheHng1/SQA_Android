@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.net.Inet4Address;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
@@ -102,7 +103,7 @@ public class Transactions {
             ((BillTrans) this).getBillName();
     }
 
-    public static Transactions getTransByJSONObj(JSONObject jsonObj) throws JSONException {
+    public static Transactions getTransByJSONObj(JSONObject jsonObj, HashMap<String, Integer> bankToFees) throws JSONException {
         //____________________Transaction dang Bill thanh toan_____________________//
         if(GECL.isKeyInJSON(jsonObj, "idDV")){
             String billId = jsonObj.getString("idDV");
@@ -167,7 +168,6 @@ public class Transactions {
         int transTypeId = transType.equals("Refill") ? Transactions.BANK_DEPOSIT : Transactions.BANK_WITHDRAW;
 
         int amount = jsonObj.getInt("SOTIEN");
-        feePercent(bankName);
         int fee = transType.equals("Refill") ? (int)(amount * (1.0 * feePercent(bankName) / 100)) : 0;
 
         return new BankTrans(transId, amount, dateTime, balanceAfter, new BankAccount(new Bank(bankName)), transTypeId, fee);

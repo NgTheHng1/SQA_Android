@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.example.mobileappprogrammingproject.APIResult.GetCardBankbyUserResult;
 import com.example.mobileappprogrammingproject.APIResult.GetMoneyResult;
@@ -48,6 +49,7 @@ public class naptien_trangchu extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.app_color));
         setContentView(R.layout.naptien_trangchu);  Intent intent = getIntent();
         token = GECL.getTokenFromSession(this);
         hoten = GECL.getObjectFromSession(this, "hoten");

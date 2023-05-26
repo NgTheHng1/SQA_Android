@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:text="Đăng ký"
-            android:textSize="30dp"
+            android:textSize="30sp"
             android:gravity="center"
             android:padding="15dp"
             android:layout_marginLeft="20dp"
@@ -41,14 +41,14 @@
                 android:layout_height="wrap_content"
                 android:text="ViDienTu xin chào!"
                 android:textStyle="bold"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:textColor="@color/black"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Nhập số điện thoại để đăng ký"
                 android:textStyle="bold"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:textColor="@color/black"
                 android:layout_marginTop="10dp"/>
             <EditText
@@ -65,7 +65,7 @@
                 android:layout_height="wrap_content"
                 android:text="Tạo mật khẩu"
                 android:textStyle="bold"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:textColor="@color/black"
                 android:layout_marginTop="10dp"/>
             <TextView
@@ -89,7 +89,7 @@
                 android:layout_height="wrap_content"
                 android:text="Họ và tên"
                 android:textStyle="bold"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:textColor="@color/black"
                 android:layout_marginTop="10dp"/>
             <EditText
@@ -105,7 +105,7 @@
                 android:layout_height="wrap_content"
                 android:text="CCCD"
                 android:textStyle="bold"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:textColor="@color/black"
                 android:layout_marginTop="10dp"/>
             <EditText
@@ -121,7 +121,7 @@
                 android:layout_height="wrap_content"
                 android:text="Giới tính"
                 android:textStyle="bold"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:textColor="@color/black"
                 android:layout_marginTop="10dp"/>
             <RadioGroup
@@ -152,7 +152,7 @@
                 android:layout_height="wrap_content"
                 android:text="Email"
                 android:textStyle="bold"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:textColor="@color/black"
                 android:layout_marginTop="10dp"/>
             <EditText
@@ -168,7 +168,7 @@
                 android:layout_gravity="center"
                 android:textColor="@color/white"
                 android:text="Đăng ký"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 android:textAllCaps="false"
                 android:layout_marginTop="20dp"

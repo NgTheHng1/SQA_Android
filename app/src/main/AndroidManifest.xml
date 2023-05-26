@@ -17,6 +17,12 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".naptien_confirm"
+            android:exported="false" />
+        <activity
+            android:name=".chuyentien_confirm"
+            android:exported="false" />
+        <activity
             android:name=".lienket_nganhang_thanhcong"
             android:exported="false" />
         <activity
@@ -49,11 +55,13 @@
         <activity
             android:name=".dangNhap"
             android:exported="true">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
 
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
         <activity
             android:name=".quenmatkhau_nhapemail"
@@ -79,15 +87,17 @@
         <activity
             android:name=".PayBillConfirmActivity"
             android:exported="false"
-            android:noHistory="true"/>
+            android:noHistory="true" />
         <activity
             android:name=".PayBillViewActivity"
             android:exported="true">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
 
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
         <activity
             android:name=".TransferReceiveTransDetailActivity"
@@ -95,11 +105,11 @@
         <activity
             android:name=".HomePageActivity"
             android:exported="true">
-                 <intent-filter>
-                 <action android:name="android.intent.action.MAIN" />
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-                 <category android:name="android.intent.category.LAUNCHER" />
-                 </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".TransResultActivity"
@@ -120,12 +130,12 @@
             android:exported="true"
             android:windowSoftInputMode="adjustPan">
 
-<!--             <intent-filter> -->
-<!--             <action android:name="android.intent.action.MAIN" /> -->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
 
 
-<!--             <category android:name="android.intent.category.LAUNCHER" /> -->
-<!--             </intent-filter> -->
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
         <activity
             android:name=".TransferTransDetailActivity"
@@ -140,13 +150,14 @@
             android:name=".HisTransActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustPan">
-<!--                 <intent-filter>-->
-<!--                 <action android:name="android.intent.action.MAIN" />-->
 
-<!--                 <category android:name="android.intent.category.LAUNCHER" />-->
-<!--                 </intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
-
     </application>
 
 </manifest>

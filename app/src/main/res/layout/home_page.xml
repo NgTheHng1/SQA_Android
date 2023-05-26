@@ -22,7 +22,20 @@
         android:layout_marginTop="15dp"
         android:layout_alignParentTop="true">
 
-        <EditText
+<!--        <EditText-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="42dp"-->
+<!--            android:layout_marginStart="10dp"-->
+<!--            android:layout_marginEnd="5dp"-->
+<!--            android:layout_weight="20"-->
+<!--            android:background="@drawable/primary_input"-->
+<!--            android:drawableStart="@drawable/search_icon"-->
+<!--            android:inputType="text"-->
+<!--            android:paddingStart="6dp"-->
+<!--            android:paddingTop="3dp"/>-->
+
+        <AutoCompleteTextView
+            android:id="@+id/input_search"
             android:layout_width="match_parent"
             android:layout_height="42dp"
             android:layout_marginStart="10dp"
@@ -32,7 +45,8 @@
             android:drawableStart="@drawable/search_icon"
             android:inputType="text"
             android:paddingStart="6dp"
-            android:paddingTop="3dp"/>
+            android:paddingTop="3dp"
+            android:completionThreshold="1"/>
 
         <ImageButton
             android:id="@+id/icon_user"

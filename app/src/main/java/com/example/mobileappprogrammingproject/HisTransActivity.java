@@ -1,6 +1,6 @@
 package com.example.mobileappprogrammingproject;
 
-import static com.example.mobileappprogrammingproject.Transactions.getTransByJSONObj;
+import static com.example.mobileappprogrammingproject.GECL.*;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -34,6 +34,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 import retrofit2.Call;
@@ -43,6 +44,7 @@ import retrofit2.Response;
 public class    HisTransActivity extends AppCompatActivity {;
     ImageButton btnBack;
     Button btnAllTrans, btnDepositTrans, btnWithTrans, btnReceiveTrans, btnTransferTrans, btnPaidBills;
+    ImageButton imgBtnClose;
     LinearLayout homePageAct, userInfoAct;
     TextView titleLayout;
     EditText edtTransSearch;
@@ -51,6 +53,7 @@ public class    HisTransActivity extends AppCompatActivity {;
     int curBalance;
     String token;
     RetrofitClient.RetrofitInterface apiService;
+    HashMap<String, Integer> bankToFeePer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +63,7 @@ public class    HisTransActivity extends AppCompatActivity {;
         apiService = RetrofitClient.getRetroInterface();
         listTrans = new ArrayList<>();
         token = GECL.getTokenFromSession(this);
+        bankToFeePer = new HashMap<>();
 
         setControl();
         setEvent();
@@ -104,6 +108,7 @@ public class    HisTransActivity extends AppCompatActivity {;
             });
         };
         Func getPaidBillListFunc = (action, data) -> {
+            print("messagemessage");
             Call<String> call = apiService.getAllBill(token);
             call.enqueue(new Callback<String>() {
                 @Override
@@ -114,7 +119,7 @@ public class    HisTransActivity extends AppCompatActivity {;
                 @Override
                 public void onFailure(Call<String> call, Throwable t) {
                     action.reject();
-                    GECL.print(t.getMessage());
+                    print(t.getMessage());
                 }
             });
         };
@@ -132,7 +137,7 @@ public class    HisTransActivity extends AppCompatActivity {;
 
                     for (JSONObject jsonObj : jsonObjList) {
                         try {
-                            tmpListTrans.add(getTransByJSONObj(jsonObj));
+                            tmpListTrans.add(Transactions.getTransByJSONObj(jsonObj, bankToFeePer));
                         } catch (JSONException e) {
                             throw new RuntimeException(e);
                         }
@@ -179,7 +184,7 @@ public class    HisTransActivity extends AppCompatActivity {;
                         @Override
                         public void onResponse(Call<String> call, Response<String> response) {
                             String responseStr = response.body();
-                            GECL.print(responseStr);
+                            print(responseStr);
                             try {
                                 JSONObject jsonObj = new JSONObject(responseStr);
                                 curBalance = jsonObj.getJSONObject("balance").getInt("SoDu");
@@ -196,14 +201,40 @@ public class    HisTransActivity extends AppCompatActivity {;
                         }
                     });
                 })
+                .then((action, data) -> {
+                    Call<String> call = RetrofitClient.getRetroInterface().getBankFees();
+                    call.enqueue(new Callback<String>() {
+                        @Override
+                        public void onResponse(Call<String> call, Response<String> response) {
+                            print(response.body());
+                            try {
+                                JSONObject jsonObj = new JSONObject(response.body());
+                                JSONArray jsonArray = jsonObj.getJSONArray("data");
+                                for (int i = 0; i < jsonArray.length(); i++) {
+                                    JSONObject objEle = (JSONObject) jsonArray.get(i);
+                                    bankToFeePer.put(objEle.getString("TENNH"), objEle.getInt("CHIETKHAU"));
+                                }
+                            } catch (JSONException e) {
+                                throw new RuntimeException(e);
+                            }
+                            action.resolve();
+                        }
+
+                        @Override
+                        public void onFailure(Call<String> call, Throwable t) {
+                            print(t.getMessage());
+                            action.reject();
+                        }
+                    });
+                })
                 .then(getPaidBillListFunc, rejectFunc)
                 .then(getTransListFunc, rejectFunc)
                 .then(renderView)
                 .start();
+        print("");
     }
 
     private void setControl() {
-        btnBack = findViewById(R.id.back_btn);
         btnAllTrans = findViewById(R.id.btn_trans_all);
         btnDepositTrans = findViewById(R.id.btn_trans_deposit);
         btnWithTrans = findViewById(R.id.btn_trans_withdraw);
@@ -214,10 +245,11 @@ public class    HisTransActivity extends AppCompatActivity {;
         homePageAct = findViewById(R.id.home_page_btn);
         userInfoAct = findViewById(R.id.user_info_btn);
         btnPaidBills = findViewById(R.id.btn_paid_bill);
+        imgBtnClose = findViewById(R.id.close_icon);
     }
 
     private void setEvent() {
-        btnBack.setOnClickListener(view -> onBackPressed());
+//        btnBack.setOnClickListener(view -> onBackPressed());
         setEventButtons(btnAllTrans, -1, true);
         setEventButtons(btnReceiveTrans, 0, false);
         setEventButtons(btnTransferTrans, 1, false);
@@ -260,6 +292,7 @@ public class    HisTransActivity extends AppCompatActivity {;
                 ActivityCompat.startActivity(HisTransActivity.this, intent, options.toBundle());
             });
         }
+        GECL.setCloseBtnEvent(this, imgBtnClose);
     }
 
     private void setEventButtons(Button btn, int transType, boolean all){

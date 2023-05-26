@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.example.mobileappprogrammingproject.APIResult.TransferResult;
 import com.example.mobileappprogrammingproject.ObjectJSON.UserJSONObject;
@@ -35,6 +36,7 @@ public class chuyentien_sotien extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.app_color));
         setContentView(R.layout.chuyentien_sotien);  Intent intent = getIntent();
         String token = GECL.getObjectFromSession(this, "token");
         String userHoten = intent.getStringExtra("userHoten");
@@ -58,47 +60,57 @@ public class chuyentien_sotien extends AppCompatActivity {
         });
         btnAccept = findViewById(R.id.btnAccept);
         btnAccept.setOnClickListener(new View.OnClickListener() {
+            //sotien, tên receiver, sdt ngnhan, message
             @Override
             public void onClick(View view) {
-                HashMap<String, String> map = new HashMap<>();
-                map.put("token", token);
-                map.put("STGD", txtSotien.getText().toString());
-                map.put("SDT", userSdt);
-                map.put("loiNhan", txtLoinhan.getText().toString());
 
-                Call<TransferResult> call  = RetrofitClient.getRetroInterface().executeTransferResult(map);
-                call.enqueue(new Callback<TransferResult>() {
-                    @Override
-                    public void onResponse(Call<TransferResult> call, Response<TransferResult> response) {
-                        TransferResult rs = response.body();
-                        String code = rs.getCode();
-                        String message = rs.getMessage();
-                        UserJSONObject user = rs.getUser();
-                        String magd = rs.getMaGD();
-                        String sodu = rs.getSodu();
-                        if (code.equals("e000")) {
-                            Intent intent = new Intent(chuyentien_sotien.this, chuyentien_thanhcong.class);
-                            intent.putExtra("sodu", sodu);
-                            intent.putExtra("token", token);
-                            intent.putExtra("sdt", user.getSdt());
-                            intent.putExtra("hoten", user.getHoten());
-                            intent.putExtra("magd", magd);
-                            intent.putExtra("loinhan", txtLoinhan.getText().toString());
-                            intent.putExtra("sotien", txtSotien.getText().toString());
-                            intent.putExtra("adminHoten", adminHoten);
-                            intent.putExtra("adminSDT", adminSDT);
-                            startActivity(intent);
-                            finish();
-                        } else {
-                            alertDialog(message);
-                        }
-                    }
+                Bundle bundle = new Bundle();
+                bundle.putString("sotien", txtSotien.getText().toString());
+                bundle.putString("hoten_ngnhan", userHoten);
+                bundle.putString("sdt_ngnhan", userSdt);
+                bundle.putString("message", txtLoinhan.getText().toString());
+                startActivity(new Intent(chuyentien_sotien.this, chuyentien_confirm.class)
+                        .putExtra("bundle", bundle));
 
-                    @Override
-                    public void onFailure(Call<TransferResult> call, Throwable t) {
-                        Toast.makeText(chuyentien_sotien.this, t.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
+//                HashMap<String, String> map = new HashMap<>();
+//                map.put("token", token);
+//                map.put("STGD", txtSotien.getText().toString());
+//                map.put("SDT", userSdt);
+//                map.put("loiNhan", txtLoinhan.getText().toString());
+//
+//                Call<TransferResult> call  = RetrofitClient.getRetroInterface().executeTransferResult(map);
+//                call.enqueue(new Callback<TransferResult>() {
+//                    @Override
+//                    public void onResponse(Call<TransferResult> call, Response<TransferResult> response) {
+//                        TransferResult rs = response.body();
+//                        String code = rs.getCode();
+//                        String message = rs.getMessage();
+//                        UserJSONObject user = rs.getUser();
+//                        String magd = rs.getMaGD();
+//                        String sodu = rs.getSodu();
+//                        if (code.equals("e000")) {
+//                            Intent intent = new Intent(chuyentien_sotien.this, chuyentien_thanhcong.class);
+//                            intent.putExtra("sodu", sodu);
+//                            intent.putExtra("token", token);
+//                            intent.putExtra("sdt", user.getSdt());//
+//                            intent.putExtra("hoten", user.getHoten());//
+//                            intent.putExtra("magd", magd);
+//                            intent.putExtra("loinhan", txtLoinhan.getText().toString());
+//                            intent.putExtra("sotien", txtSotien.getText().toString());
+//                            intent.putExtra("adminHoten", adminHoten);
+//                            intent.putExtra("adminSDT", adminSDT);
+//                            startActivity(intent);
+//                            finish();
+//                        } else {
+//                            alertDialog(message);
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onFailure(Call<TransferResult> call, Throwable t) {
+//                        Toast.makeText(chuyentien_sotien.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+//                    }
+//                });
             }
         });
         txtSotien.setOnEditorActionListener((textView, i, keyEvent) -> {
