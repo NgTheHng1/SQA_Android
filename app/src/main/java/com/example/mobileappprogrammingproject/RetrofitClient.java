@@ -24,6 +24,7 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.PUT;
+import retrofit2.http.Query;
 
 public class RetrofitClient {
     private static Retrofit retrofit = null;
@@ -80,11 +81,10 @@ public class RetrofitClient {
         @FormUrlEncoded
         @POST("/api/v1/transaction/get-latest-trans_info")
         Call<String> getLatestTransInfo(@Field("token") String authToken);
-
-
         @GET("/api/v1/bank/get-bank-fees")
         Call<String> getBankFees();
-
+        @GET("/api/v1/user/get-username-by-sdt")
+        Call<String> getUsernamByPhoneNum(@Query("SDT") String phoneNum);
 
 
         @POST("/api/v1/account/login")

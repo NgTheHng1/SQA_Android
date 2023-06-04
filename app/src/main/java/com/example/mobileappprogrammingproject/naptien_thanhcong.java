@@ -14,15 +14,18 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.riversun.promise.Promise;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+import pl.droidsonroids.gif.GifDrawable;
+import pl.droidsonroids.gif.GifImageView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class naptien_thanhcong extends AppCompatActivity {
-    TextView txtSoduvi, txtTransId, txtTime, txtAmount;
+    TextView txtSoduvi, txtTransId, txtTime, txtAmount, txtBankName, txtBankAcc;
     Button btnBackHomePage;
     @SuppressLint("MissingInflatedId")
     @Override
@@ -39,15 +42,31 @@ public class naptien_thanhcong extends AppCompatActivity {
 
         txtAmount = findViewById(R.id.amount);
 
+        txtBankName = findViewById(R.id.bank_name);
+
+        txtBankAcc = findViewById(R.id.bank_account);
+
         Intent intent = getIntent();
         String Soduvi = GECL.getObjectFromSession(this, "sodu");
         String token = GECL.getObjectFromSession(this, "token");
         String sdt = GECL.getObjectFromSession(this, "sdt");
         String hoten = GECL.getObjectFromSession(this, "hoten");
+        String ten_nghang = intent.getStringExtra("tennh");
+        String sotk = intent.getStringExtra("sotk");
 
-        txtSoduvi.setText(Soduvi);
+        txtBankName.setText(ten_nghang);
+        txtBankAcc.setText(sotk);
 
         btnBackHomePage = findViewById(R.id.btnBackHomePage);
+
+        try {
+            GifDrawable gifDrawable = new GifDrawable(getResources(), R.drawable.successful_gif);
+            ((GifImageView)findViewById(R.id.check_logo)).setImageDrawable(gifDrawable);
+            gifDrawable.setLoopCount(1);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
         btnBackHomePage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -113,7 +132,7 @@ public class naptien_thanhcong extends AppCompatActivity {
                             action.reject();
                         }
                     });
-            })
+                })
             .start();
     }
 }

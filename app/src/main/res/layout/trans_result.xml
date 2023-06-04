@@ -145,7 +145,7 @@
                 android:layout_marginTop="12dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Dịch vụ/Cửa hàng"
+                android:text="Dịch vụ:"
                 android:fontFamily="sans-serif-thin"
                 android:textStyle="bold"
                 android:textSize="16dp"/>
@@ -168,6 +168,28 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Chi tiết giao dịch"
+                android:fontFamily="sans-serif-thin"
+                android:textStyle="bold"
+                android:textSize="16dp"/>
+
+            <TextView
+                android:id="@+id/text100"
+                android:layout_below="@id/text7"
+                android:layout_marginTop="12dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ngân hàng"
+                android:fontFamily="sans-serif-thin"
+                android:textStyle="bold"
+                android:textSize="16dp"/>
+
+            <TextView
+                android:id="@+id/text101"
+                android:layout_below="@id/text100"
+                android:layout_marginTop="12dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Số tài khoản"
                 android:fontFamily="sans-serif-thin"
                 android:textStyle="bold"
                 android:textSize="16dp"/>
@@ -208,11 +230,35 @@
                 android:textSize="16dp"
                 android:textStyle="bold" />
 
+            <TextView
+                android:id="@+id/bank_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/text100"
+                android:layout_alignParentEnd="true"
+                android:fontFamily="sans-serif-light"
+                android:text="Agribank"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/bank_account"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/text101"
+                android:layout_alignParentEnd="true"
+                android:fontFamily="sans-serif-light"
+                android:text="354839753"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_below="@id/text7"
+                android:layout_below="@id/text101"
                 android:layout_marginTop="20dp">
                 
                 <androidx.appcompat.widget.AppCompatButton

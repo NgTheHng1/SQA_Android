@@ -1,6 +1,7 @@
 package com.example.mobileappprogrammingproject;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -24,6 +25,7 @@ public class chuyentien_confirm extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.app_color));
         setContentView(R.layout.chuyentien_confirm);
         Bundle bundle = getIntent().getBundleExtra("bundle");
         String sotien = bundle.getString("sotien");

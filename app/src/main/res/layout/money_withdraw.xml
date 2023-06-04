@@ -141,7 +141,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignBottom="@id/text_tk_the"
                 android:layout_alignParentEnd="true"
-                android:text="Biểu phí"
+                android:text="Lựa chọn"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:textColor="@color/app_color"/>

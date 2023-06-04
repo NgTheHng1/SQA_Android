@@ -126,10 +126,15 @@ public class ConfirmWithdrawActivity extends AppCompatActivity {
                             });
                         })
                         .then((action, data) -> {
+                            String bankAcc = getIntent().getBundleExtra("bundle").getString("bankAcc");
+                            String bankName = getIntent().getBundleExtra("bundle").getString("bankName");
+
                             Bundle bundle = new Bundle();
                             bundle.putString("amount", amount);
                             bundle.putString("time", time[0]);
                             bundle.putString("transId", transId[0]);
+                            bundle.putString("bankAcc", bankAcc);
+                            bundle.putString("bankName", bankName);
 
                             Intent movePage = new Intent(ConfirmWithdrawActivity.this, TransResultActivity.class);
                             movePage.putExtra("bundle", bundle);

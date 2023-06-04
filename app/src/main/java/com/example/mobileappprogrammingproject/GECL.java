@@ -2,19 +2,26 @@ package com.example.mobileappprogrammingproject;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.ref.WeakReference;
+import java.net.Inet4Address;
 import java.text.DecimalFormat;
 import java.text.Normalizer;
 import java.text.NumberFormat;
@@ -86,6 +93,100 @@ public class GECL {
             activity.startActivity(new Intent(activity, HomePageActivity.class));
             activity.finish();
         });
+    }
+    public static void alertDialog(String str, Context context) {
+        androidx.appcompat.app.AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setMessage(str);
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.cancel();
+            }
+        });
+        builder.create();
+        builder.show();
+        builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialogInterface) {
+                dialogInterface.dismiss();
+            }
+        });
+    }
+
+    public static String clearFormatCurrency(String amount){
+        return amount.replaceAll("\\D+", "");
+    }
+
+    public static boolean compareAmountBalance(String rawAmount, String balanceStr){
+        int amount = Integer.parseInt(rawAmount) * 105 / 100;
+        int balance = Integer.parseInt(balanceStr);
+        return amount <= balance;
+    }
+
+    public static class SuggestItem{
+        String activityName;
+        int iconResource;
+
+        public SuggestItem(String activityName, int iconResource) {
+            this.activityName = activityName;
+            this.iconResource = iconResource;
+        }
+
+        public String getActivityName() {
+            return activityName;
+        }
+
+        public void setActivityName(String activityName) {
+            this.activityName = activityName;
+        }
+
+        public int getIconResource() {
+            return iconResource;
+        }
+
+        public void setIconResource(int iconResource) {
+            this.iconResource = iconResource;
+        }
+    }
+
+    public static class MoneyTextWatcher implements TextWatcher {
+        private final WeakReference<EditText> editTextWeakReference;
+
+        public MoneyTextWatcher(EditText editText) {
+            editTextWeakReference = new WeakReference<EditText>(editText);
+        }
+
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+            EditText editText = editTextWeakReference.get();
+            try{
+                if (editText == null) return;
+                String s = editable.toString();
+                if (s.isEmpty()) return;
+                editText.removeTextChangedListener(this);
+                String cleanString = s.replaceAll("\\D+", "");
+                DecimalFormat currencyFormatter = new DecimalFormat("#,###");
+                String formatted = currencyFormatter.format((double) Integer.parseInt(cleanString));
+
+                editText.setText(formatted);
+                editText.setSelection(formatted.length());
+                editText.addTextChangedListener(this);
+            }catch(NumberFormatException e){
+                String str = editable.toString();
+                str = str.substring(0,str.length()-1);
+                editText.setText(str);
+                editText.setSelection(str.length());
+                editText.addTextChangedListener(this);
+            }
+        }
     }
 }
 // frtd: formatted

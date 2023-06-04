@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,7 +20,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import com.example.mobileappprogrammingproject.APIResult.GetCardBankbyUserResult;
-import com.example.mobileappprogrammingproject.APIResult.GetMoneyResult;
 import com.example.mobileappprogrammingproject.ObjectJSON.TaiKhoanNganHangJSONObject;
 
 import org.json.JSONException;
@@ -34,17 +32,15 @@ import java.util.HashMap;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class naptien_trangchu extends AppCompatActivity {
     ListView listNganhang;
     EditText txtSotien;
-    Button btnNaptien, btnClose;
+    Button btnNaptien, btnClose, btnThemNH;
     TextView txtSodu;
-    private String posNganhang = "";
     ArrayList<TaiKhoanNganHangJSONObject> listNHfromAPI = new ArrayList<>();
-    String matk, token, hoten, sdt, sodu;
+    String matk, token, hoten, sdt, sodu, tennh;
+    NganhangAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,62 +99,43 @@ public class naptien_trangchu extends AppCompatActivity {
             }
             return false;
         });
-        listNganhang.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Log.e("Baohan", listNHfromAPI.get(i).getTennh());
-                posNganhang = listNHfromAPI.get(i).getTennh();
-                for(TaiKhoanNganHangJSONObject tknh : listNHfromAPI) {
-                    if(tknh.getTennh().equals(listNHfromAPI.get(i).getTennh())) {
-                        matk = tknh.getMatk();
-                    }
-                }
-            }
-        });
+        txtSotien.addTextChangedListener(new GECL.MoneyTextWatcher(txtSotien));
+//        listNganhang.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                Log.e("Baohan", listNHfromAPI.get(i).getTennh());
+//                posNganhang = listNHfromAPI.get(i).getTennh();
+//                for(TaiKhoanNganHangJSONObject tknh : listNHfromAPI) {
+//                    if(tknh.getTennh().equals(listNHfromAPI.get(i).getTennh())) {
+//                        matk = tknh.getMatk();
+//                        tennh = tknh.getTennh();
+//                    }
+//                }
+//            }
+//        });
         btnNaptien.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                if(adapter.getSelectedInfo()[2].equals("-1")) {
+                    alertDialog("Bạn vui lòng chọn ngân hàng để nạp tiền!");
+                    return;
+                }
+               String matk = "";
+               matk = adapter.getSelectedInfo()[0];
+               tennh = adapter.getSelectedInfo()[1];
                 if(checkEmpty(txtSotien)) {
                     txtSotien.setError("Vui lòng nhập số tiền.");
                 }
-                else if(posNganhang.equals("")) {
-                    Log.e("position", posNganhang);
-                    alertDialog("Vui lòng chọn ngân hàng để nạp tiền");
+                else if (matk.equals("")) {
+                    alertDialog("Vui lòng chọn Ngân Hàng.");
                 }
                 else {
-                    HashMap<String, String> map = new HashMap<>();
-                    map.put("token", token);
-                    map.put("MATK", matk);
-                    map.put("MONEY", txtSotien.getText().toString());
-
-                    int soduvi = Integer.parseInt(txtSotien.getText().toString()) + Integer.parseInt(sodu);
-
-                    Call<GetMoneyResult> call  = RetrofitClient.getRetroInterface().executeGetMoneyResult(map);
-                    call.enqueue(new Callback<GetMoneyResult>() {
-                        @Override
-                        public void onResponse(Call<GetMoneyResult> call, Response<GetMoneyResult> response) {
-                            GetMoneyResult rs = response.body();
-                            String code = rs.getCode();
-                            if(code.equals("e000")) {
-                                Intent intent = new Intent(naptien_trangchu.this, naptien_thanhcong.class);
-                                intent.putExtra("Soduvi", String.valueOf(soduvi));
-                                intent.putExtra("token", token);
-                                intent.putExtra("sdt", sdt);
-                                intent.putExtra("hoten", hoten);
-                                startActivity(intent);
-                                finish();
-                            }
-                            else {
-                                alertDialog(rs.getMessage());
-                            }
-                        }
-
-                        @Override
-                        public void onFailure(Call<GetMoneyResult> call, Throwable t) {
-                            Toast.makeText(naptien_trangchu.this, t.getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                    });
+                    Bundle bundle = new Bundle();
+                    bundle.putString("sotien", GECL.clearFormatCurrency(txtSotien.getText().toString()));
+                    bundle.putString("ten_nghang", tennh);
+                    bundle.putString("sotk", matk);
+                    startActivity(new Intent(naptien_trangchu.this, naptien_confirm.class)
+                            .putExtra("bundle", bundle));
                 }
             }
         });
@@ -166,6 +143,13 @@ public class naptien_trangchu extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish();
+            }
+        });
+        btnThemNH.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(naptien_trangchu.this, lienketNganHang.class);
+                startActivity(intent);
             }
         });
     }
@@ -176,6 +160,7 @@ public class naptien_trangchu extends AppCompatActivity {
         txtSotien = findViewById(R.id.txtSotien);
         btnNaptien = findViewById(R.id.btnNaptien);
         btnClose = findViewById(R.id.btnClose);
+        btnThemNH = findViewById(R.id.btnThemnganhang);
     }
 
     public void renderListNganHangFromAPI(String token, String sdt) {
@@ -192,19 +177,14 @@ public class naptien_trangchu extends AppCompatActivity {
                 listNHfromAPI = rs.getListTKNH();
                 if(code.equals("e000")) {
                     if(listNHfromAPI.size() != 0) {
-                        Log.e("TenNH",listNHfromAPI.get(0).getTennh());
-                        for(TaiKhoanNganHangJSONObject tknh : listNHfromAPI) {
-//                        Log.e("TenNH", tknh.getTennh());
-                            listTenNganHang.add(tknh.getTennh() + " - " + tknh.getMatk());
-                        }
-                        ArrayAdapter<String> adapter = new ArrayAdapter<String>(naptien_trangchu.this, android.R.layout.simple_list_item_1, listTenNganHang);
+                        adapter = new NganhangAdapter(naptien_trangchu.this, R.layout.nganhang_item, listNHfromAPI);
                         listNganhang.setAdapter(adapter);
+                        Log.e("Ngan Hang" ,adapter.getSelectedInfo()[0]);
                     }
                     else {
                         String []list = {"Chưa có tài khoản ngân hàng nào"};
                         ArrayAdapter<String> adapter = new ArrayAdapter<String>(naptien_trangchu.this, android.R.layout.simple_list_item_1, list);
                         listNganhang.setAdapter(adapter);
-                        listNganhang.setEnabled(false);
                     }
 
                 }

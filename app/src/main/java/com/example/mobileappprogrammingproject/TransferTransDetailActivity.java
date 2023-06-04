@@ -50,7 +50,7 @@ public class TransferTransDetailActivity extends AppCompatActivity {
         tvAmount.setText(bundle.getString("amount"));
         tvTransTime.setText(bundle.getString("transTime"));
         tvTransId.setText(bundle.getString("transId"));
-        tvSender.setText(bundle.getString("sender"));
+//        tvSender.setText(bundle.getString("sender"));
         tvReceiver.setText(bundle.getString("receiver"));
         tvBalanceAfter.setText(bundle.getString("balanceAfter"));
         tvPhoneNum.setText(bundle.getString("phoneNum"));

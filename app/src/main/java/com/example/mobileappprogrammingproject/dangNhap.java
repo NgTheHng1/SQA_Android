@@ -108,10 +108,16 @@ public class dangNhap extends AppCompatActivity {
                     String token = rs.getToken();
                     UserJSONObject obj = rs.getUser();
                     Intent intent = new Intent(dangNhap.this, HomePageActivity.class);
-                    intent.putExtra("hoten", obj.getHoten());
-                    intent.putExtra("sdt", obj.getSdt());
-                    intent.putExtra("sodu", obj.getSodu());
-                    intent.putExtra("token", token);
+//                    intent.putExtra("hoten", obj.getHoten());
+//                    intent.putExtra("sdt", obj.getSdt());
+//                    intent.putExtra("sodu", obj.getSodu());
+//                    intent.putExtra("token", token);
+
+                    GECL.saveTokenToSession(token, dangNhap.this);
+                    GECL.saveObjectToSession(obj.getHoten(), dangNhap.this, "hoten");
+                    GECL.saveObjectToSession(obj.getSodu(), dangNhap.this, "sodu");
+                    GECL.saveObjectToSession(obj.getSdt(), dangNhap.this, "sdt");
+
                     Log.e("Error", token);
                     startActivity(intent);
                     finish();

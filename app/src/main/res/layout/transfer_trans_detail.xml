@@ -221,7 +221,7 @@
                     android:layout_alignBottom="@id/text4"
                     android:layout_alignParentEnd="true"
                     android:fontFamily="sans-serif-thin"
-                    android:text="Ví MiMi"
+                    android:text="ViDienTu"
                     android:textColor="@color/black"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -286,7 +286,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:fontFamily="sans-serif-light"
-                    android:text="Tên ví MiMi"
+                    android:text="Tên ví"
                     android:textColor="#D3808080"
                     android:textSize="18sp"
                     android:textStyle="bold" />

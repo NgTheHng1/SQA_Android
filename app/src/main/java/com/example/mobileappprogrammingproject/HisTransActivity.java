@@ -422,11 +422,13 @@ public class    HisTransActivity extends AppCompatActivity {;
                 boolean isThisTransBill = GECL.isKeyInJSON(jsonObjEle, "ngayDong");
                 String transType, balanceStrInJSON;
                 int sign;
+                double fee = 1;
 
                 if(!isThisTransBill){
                     transType = jsonObjEle.getString("LoaiGD");
                     sign = "Receive_Refill".contains(transType) ? -1 : 1;
                     balanceStrInJSON = "Receive_Send".contains(transType) ? "STGD" : "SOTIEN";
+                    fee = transType.equals("Send") ? 1.05 : 1;
                 }else{
                     sign = 1;
                     balanceStrInJSON = "thanhTien";
@@ -435,7 +437,7 @@ public class    HisTransActivity extends AppCompatActivity {;
                 jsonObjEle.put("balanceAfter", tmpBalance);
 
                 //Luu balance hien tai cho balanceAfter cua transaction moi nhat
-                tmpBalance += sign * jsonObjEle.getInt(balanceStrInJSON);
+                tmpBalance += sign * jsonObjEle.getInt(balanceStrInJSON) * fee;
             }
         } catch (JSONException e) {
             action.reject();

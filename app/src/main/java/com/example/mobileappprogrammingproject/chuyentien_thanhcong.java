@@ -13,9 +13,12 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.riversun.promise.Promise;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+import pl.droidsonroids.gif.GifDrawable;
+import pl.droidsonroids.gif.GifImageView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -52,10 +55,17 @@ public class chuyentien_thanhcong extends AppCompatActivity {
         txtSdt.setText(sdt);
         txtLoinhan = findViewById(R.id.txtLoinhan);
         txtLoinhan.setText(loinhan);
-
         txtTime = findViewById(R.id.time);
-
         btnAccept =findViewById(R.id.btnAccept);
+
+        try {
+            GifDrawable gifDrawable = new GifDrawable(getResources(), R.drawable.successful_gif);
+            ((GifImageView)findViewById(R.id.check_logo)).setImageDrawable(gifDrawable);
+            gifDrawable.setLoopCount(1);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
         btnAccept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

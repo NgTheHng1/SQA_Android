@@ -1,16 +1,18 @@
 package com.example.mobileappprogrammingproject;
 
-import android.util.Log;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.net.Inet4Address;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 
 public class Transactions {
     private String transId;
@@ -201,8 +203,28 @@ public class Transactions {
                 return null;
         }
     }
+
+    public static Class<? extends AppCompatActivity> getActByIcon(int iconResource){
+        switch (iconResource){
+            case R.drawable.exchange_arrow:
+                return chuyentien_trangchu.class;
+            case R.drawable.add_money:
+                return naptien_trangchu.class;
+            case R.drawable.withdraw_money:
+                return WithdrawActiveActivity.class;
+            case R.drawable.pay_bill:
+                return PayBillViewActivity.class;
+            case R.drawable.history_trans_icon_clicked:
+                return HisTransActivity.class;
+            case R.drawable.user_icon_clicked:
+                return thongtincanhan_main.class;
+            default:
+                return null;
+        }
+    }
     public String getPrefixOfAmount(){
-        return transType % 2 == 0 ? "+" : "-";
+        List<Integer> listIncrease = new ArrayList<>(Arrays.asList(0, 2));
+        return listIncrease.contains(transType) ? "+" : "-";
     }
     public String getReceiverOrSender(){
         return transType <= 1
@@ -244,7 +266,7 @@ public class Transactions {
     }
 
     public LocalDateTime getTime() {
-        return time;
+        return time.plusHours(7);
     }
 
     public void setTime(LocalDateTime time) {

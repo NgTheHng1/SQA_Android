@@ -20,7 +20,7 @@ import pl.droidsonroids.gif.GifImageView;
 
 public class TransResultActivity extends AppCompatActivity {
     Button btnBackHome, btnNewWithdraw;
-    TextView tvAmount, tvAmount2, tvTime, tvTransId;
+    TextView tvAmount, tvAmount2, tvTime, tvTransId, tvBankName, tvBankAcc;
     GifImageView gifImageView;
 
     @Override
@@ -39,6 +39,8 @@ public class TransResultActivity extends AppCompatActivity {
         String amount = bundle.getString("amount");
         String time = bundle.getString("time");
         String transId = bundle.getString("transId");
+        String bankAcc = bundle.getString("bankAcc");
+        String bankName = bundle.getString("bankName");
 
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDateTime datetime = LocalDateTime.parse(time, dateFormatter);
@@ -48,10 +50,12 @@ public class TransResultActivity extends AppCompatActivity {
         tvAmount2.setText(formatCurrency(Integer.parseInt(amount), ""));
         tvTime.setText(timeStr);
         tvTransId.setText(transId);
+        tvBankAcc.setText(bankAcc);
+        tvBankName.setText(bankName);
 
         try {
             GifDrawable gifDrawable = new GifDrawable(getResources(), R.drawable.successful_gif);
-            gifImageView.setImageDrawable(gifDrawable);
+            ((GifImageView)findViewById(R.id.check_logo)).setImageDrawable(gifDrawable);
             gifDrawable.setLoopCount(1);
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -66,6 +70,8 @@ public class TransResultActivity extends AppCompatActivity {
         tvTime = findViewById(R.id.time_trans_detail);
         tvTransId = findViewById(R.id.trans_id);
         gifImageView = findViewById(R.id.check_logo);
+        tvBankAcc = findViewById(R.id.bank_account);
+        tvBankName = findViewById(R.id.bank_name);
     }
 
     private void setEvent() {

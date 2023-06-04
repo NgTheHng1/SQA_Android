@@ -49,7 +49,7 @@ public class EleTransViewAdapter extends RecyclerView.Adapter<EleTransViewAdapte
         String amountPrefix = thisTrans.getPrefixOfAmount();
 
         int imageSource = listImgSource[transType];
-        String transTypeStr = transType <= 3 ? listTransType[transType] + " " + receiverOrSender : ((BillTrans) thisTrans).getBillName();
+        String transTypeStr = transType <= 3 ? (listTransType[transType] + " " + receiverOrSender) : ((BillTrans) thisTrans).getBillName();
         String transTime = thisTrans.getTime().format(DateTimeFormatter.ofPattern("HH:mm dd/MM/yyyy"));
         String balanceAfter = formatCurrency(thisTrans.getBalanceAfter(), "");
         String amount = formatCurrency(thisTrans.getAmount(), amountPrefix);

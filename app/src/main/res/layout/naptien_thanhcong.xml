@@ -44,10 +44,19 @@
             android:orientation="vertical"
             android:padding="10dp"
             android:background="@drawable/edittextborder">
-            <TextView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:background="@drawable/ic_checked"
+<!--            <TextView-->
+<!--                android:layout_width="80dp"-->
+<!--                android:layout_height="80dp"-->
+<!--                android:background="@drawable/ic_checked"-->
+<!--                android:layout_gravity="center"/>-->
+            <pl.droidsonroids.gif.GifImageView
+                android:id="@+id/check_logo"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_below="@id/text_xac_nhan"
+                android:src="@drawable/successful_gif"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
                 android:layout_gravity="center"/>
             <TextView
                 android:layout_width="match_parent"
@@ -125,6 +134,49 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="200,000đ"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:gravity="end"
+                    android:textColor="@color/black"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Số tài khoản:"
+                    android:textSize="20sp"
+                    android:textColor="@color/textcolor"/>
+                <TextView
+                    android:id="@+id/bank_account"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="0850943850"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:gravity="end"
+                    android:textColor="@color/black"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="Ngân hàng:"
+                    android:textSize="20sp"
+                    android:textColor="@color/textcolor"/>
+                <TextView
+                    android:id="@+id/bank_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Agribank"
                     android:textStyle="bold"
                     android:textSize="20sp"
                     android:gravity="end"

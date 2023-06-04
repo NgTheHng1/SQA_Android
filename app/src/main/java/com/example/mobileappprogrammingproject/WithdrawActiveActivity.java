@@ -199,7 +199,7 @@ public class WithdrawActiveActivity extends AppCompatActivity {
             return false;
         });
 
-        edtText.addTextChangedListener(new MoneyTextWatcher(edtText));
+        edtText.addTextChangedListener(new GECL.MoneyTextWatcher(edtText));
 
         edtText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override

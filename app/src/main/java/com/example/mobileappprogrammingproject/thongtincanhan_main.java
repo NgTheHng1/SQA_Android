@@ -34,9 +34,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class thongtincanhan_main extends AppCompatActivity {
     Button btnUser, btnClose, btnDangxuat, btnLkBank;
-  
-     
-      
     ArrayList<TaiKhoanNganHangJSONObject> listNHfromAPI = new ArrayList<>();
     ListView listNganhang;
     LinearLayout hisTransLayout, homePageLayout;
@@ -160,7 +157,7 @@ public class thongtincanhan_main extends AppCompatActivity {
                         finish();
                     }
                 });
-                builder.setPositiveButton("No", new DialogInterface.OnClickListener() {
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         dialogInterface.cancel();

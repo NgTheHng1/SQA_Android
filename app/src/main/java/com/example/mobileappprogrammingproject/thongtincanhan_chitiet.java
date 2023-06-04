@@ -31,9 +31,6 @@ public class thongtincanhan_chitiet extends AppCompatActivity {
     TextView txtEmail;
     TextView txtGioitinh;
 
-  
-     
-      
     Button btnClose, btnChinhsuacanhan;
 
     @Override
@@ -89,6 +86,7 @@ public class thongtincanhan_chitiet extends AppCompatActivity {
                             intent.putExtra("gioitinh", obj.getGioitinh());
                             intent.putExtra("cccd", obj.getCccd());
                             intent.putExtra("sdt", sdt);
+                            intent.putExtra("email", obj.getMail());
                             intent.putExtra("token", token);
                             startActivity(intent);
                         }

@@ -35,6 +35,7 @@
 <!--            android:paddingTop="3dp"/>-->
 
         <AutoCompleteTextView
+            android:textCursorDrawable="@drawable/custom_cursor"
             android:id="@+id/input_search"
             android:layout_width="match_parent"
             android:layout_height="42dp"
@@ -46,7 +47,9 @@
             android:inputType="text"
             android:paddingStart="6dp"
             android:paddingTop="3dp"
-            android:completionThreshold="1"/>
+            android:completionThreshold="1"
+            android:imeOptions="actionDone"
+            android:textColor="@color/textcolor"/>
 
         <ImageButton
             android:id="@+id/icon_user"
@@ -148,18 +151,18 @@
                 android:layout_marginTop="7dp"
                 android:textStyle="bold"/>
 
-            <TextView
-                android:id="@+id/txt_user"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Quản lý tài khoản"
-                android:layout_alignParentRight="true"
-                android:textSize="16sp"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="3dp"
-                app:drawableEndCompat="@drawable/next_arrow"
-                android:textStyle="bold"
-                />
+<!--            <TextView-->
+<!--                android:id="@+id/txt_user"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Quản lý tài khoản"-->
+<!--                android:layout_alignParentRight="true"-->
+<!--                android:textSize="16sp"-->
+<!--                android:layout_centerVertical="true"-->
+<!--                android:layout_marginRight="3dp"-->
+<!--                app:drawableEndCompat="@drawable/next_arrow"-->
+<!--                android:textStyle="bold"-->
+<!--                />-->
         </RelativeLayout>
 
     </RelativeLayout>

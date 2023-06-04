@@ -32,7 +32,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:gravity="center"
-            android:text="Để có thể thanh toán dịch vụ trên MoMo, bạn cần liên kết ngân hàng hoặc cung cấp thông tin tài khoản thanh toán.    Thực hiện ngay!"
+            android:text="Bạn hãy trở về trang đăng nhập để hoàn thành bước đăng ký này!"
             android:textColor="@color/textcolor"
             android:textSize="20sp" />
         <Button
@@ -47,17 +47,17 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginTop="20dp"/>
-        <Button
-            android:id="@+id/btnLkbank"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:text="Cung cấp thông tin ngân hàng"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:textAllCaps="false"
-            android:background="@drawable/button"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginTop="20dp"/>
+<!--        <Button-->
+<!--            android:id="@+id/btnLkbank"-->
+<!--            android:gravity="center"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:text="Cung cấp thông tin ngân hàng"-->
+<!--            android:textSize="20sp"-->
+<!--            android:textStyle="bold"-->
+<!--            android:textAllCaps="false"-->
+<!--            android:background="@drawable/button"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="60dp"-->
+<!--            android:layout_marginTop="20dp"/>-->
     </LinearLayout>
 </LinearLayout>

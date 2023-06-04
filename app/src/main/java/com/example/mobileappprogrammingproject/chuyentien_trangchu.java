@@ -1,6 +1,7 @@
 package com.example.mobileappprogrammingproject;
 
 import static com.example.mobileappprogrammingproject.GECL.hideKeyboard;
+import static com.example.mobileappprogrammingproject.GECL.print;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -21,6 +22,10 @@ import androidx.core.content.ContextCompat;
 import com.example.mobileappprogrammingproject.APIResult.GetAllUserTransferedResult;
 import com.example.mobileappprogrammingproject.ObjectJSON.UserJSONObject;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.riversun.promise.Promise;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -37,6 +42,7 @@ public class chuyentien_trangchu extends AppCompatActivity {
     ArrayList<UserJSONObject> listUser = new ArrayList<>();
     private String posUserHoten = "";
     private String posUserSdt = "";
+    boolean isListUserClicked = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,14 +74,58 @@ public class chuyentien_trangchu extends AppCompatActivity {
         btnAccept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(chuyentien_trangchu.this, chuyentien_sotien.class);
-                intent.putExtra("token", token);
-                intent.putExtra("userHoten", posUserHoten);
-                intent.putExtra("userSdt", posUserSdt);
-                intent.putExtra("adminHoten", adminHoten);
-                intent.putExtra("adminSDT", adminSDT);
-                startActivity(intent);
-                finish();
+                if(txtSdt.getText().toString().equals("")){
+                    alertDialog("Vui lòng nhập SDT người nhận");
+                    return;
+                }
+
+                if(txtSdt.getText().toString().length() != 10){
+                    alertDialog("Vui lòng nhập SDT hợp lệ!");
+                    return;
+                }
+                print("message");
+                Promise.resolve()
+                        .then((action, data) -> {
+                            Call<String> call = null;
+                            try{
+                             call = RetrofitClient.getRetroInterface().getUsernamByPhoneNum(txtSdt.getText().toString());
+                            }catch(Exception e){
+                                print(e.getMessage());
+                            }
+                            call.enqueue(new Callback<String>() {
+                                @Override
+                                public void onResponse(Call<String> call, Response<String> response) {
+                                    try {
+                                        String userName = (new JSONObject(response.body())).getString("userName");
+                                        if(userName.equals("")) {
+                                            alertDialog("Số điện thoại không tồn tại trong hệ thống");
+                                            action.reject();
+                                            return;
+                                        }
+                                        action.resolve(userName);
+                                    } catch (JSONException e) {
+                                        throw new RuntimeException(e);
+                                    }
+                                }
+
+                                @Override
+                                public void onFailure(Call<String> call, Throwable t) {
+                                    print(t.getMessage());
+                                }
+                            });
+                        })
+                        .then((action, data) -> {
+                            String userName = (String) data;
+                            Intent intent = new Intent(chuyentien_trangchu.this, chuyentien_sotien.class);
+                            intent.putExtra("token", token);
+                            intent.putExtra("userHoten", userName);
+                            intent.putExtra("userSdt", txtSdt.getText().toString());
+                            intent.putExtra("adminHoten", adminHoten);
+                            intent.putExtra("adminSDT", adminSDT);
+                            startActivity(intent);
+                            finish();
+                        })
+                        .start();
             }
         });
         txtSdt.setOnEditorActionListener((textView, i, keyEvent) -> {

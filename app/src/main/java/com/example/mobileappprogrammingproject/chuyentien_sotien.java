@@ -1,6 +1,8 @@
 package com.example.mobileappprogrammingproject;
 
+import static com.example.mobileappprogrammingproject.GECL.compareAmountBalance;
 import static com.example.mobileappprogrammingproject.GECL.hideKeyboard;
+import static com.example.mobileappprogrammingproject.GECL.print;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -20,6 +22,10 @@ import androidx.core.content.ContextCompat;
 import com.example.mobileappprogrammingproject.APIResult.TransferResult;
 import com.example.mobileappprogrammingproject.ObjectJSON.UserJSONObject;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.riversun.promise.Promise;
+
 import java.util.HashMap;
 
 import retrofit2.Call;
@@ -33,11 +39,14 @@ public class chuyentien_sotien extends AppCompatActivity {
     EditText txtSotien, txtLoinhan;
     Button btnAccept, btnClose;
 
+    String balance;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.app_color));
         setContentView(R.layout.chuyentien_sotien);  Intent intent = getIntent();
+
+
         String token = GECL.getObjectFromSession(this, "token");
         String userHoten = intent.getStringExtra("userHoten");
         String userSdt = intent.getStringExtra("userSdt");
@@ -59,13 +68,22 @@ public class chuyentien_sotien extends AppCompatActivity {
             }
         });
         btnAccept = findViewById(R.id.btnAccept);
+
+        txtSotien.addTextChangedListener(new GECL.MoneyTextWatcher(txtSotien));
+
         btnAccept.setOnClickListener(new View.OnClickListener() {
             //sotien, tên receiver, sdt ngnhan, message
             @Override
             public void onClick(View view) {
 
+                String amount = GECL.clearFormatCurrency(txtSotien.getText().toString());
+                if(!compareAmountBalance(amount, balance)){
+                    alertDialog("Số tiền trong ví không đủ để chuyển!");
+                    return;
+                }
+
                 Bundle bundle = new Bundle();
-                bundle.putString("sotien", txtSotien.getText().toString());
+                bundle.putString("sotien", amount);
                 bundle.putString("hoten_ngnhan", userHoten);
                 bundle.putString("sdt_ngnhan", userSdt);
                 bundle.putString("message", txtLoinhan.getText().toString());
@@ -121,6 +139,33 @@ public class chuyentien_sotien extends AppCompatActivity {
             }
             return false;
         });
+
+        Promise.resolve()
+                //get balance of user
+                .then((action, data) -> {
+                    Call<String> call = RetrofitClient.getRetroInterface().getBalanceByUser(token);
+                    call.enqueue(new Callback<String>() {
+                        @Override
+                        public void onResponse(Call<String> call, Response<String> response) {
+                            String responseStr = response.body();
+                            print(responseStr);
+                            try {
+                                JSONObject jsonObj = new JSONObject(responseStr);
+                                balance = jsonObj.getJSONObject("balance").getString("SoDu");
+                            } catch (JSONException e) {
+                                throw new RuntimeException(e);
+                            }
+                            action.resolve();
+                        }
+
+                        @Override
+                        public void onFailure(Call<String> call, Throwable t) {
+                            GECL.makeToast("Lỗi", chuyentien_sotien.this);
+                            action.reject();
+                        }
+                    });
+                })
+                .start();
     }
     public void alertDialog(String str) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
