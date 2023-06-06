@@ -63,7 +63,7 @@ public class RetrofitClient {
         Call<String> withdrawMoneyTrans(@Field("token") String authToken, @Field("MATK") String bankAcc, @Field("MONEY") String amount);
 
         @FormUrlEncoded
-        @POST("/api/v1/services/getAllServices")
+        @POST("/api/v1/services/get-all-services-over")
         Call<String> getAllBill(@Field("token") String authToken);
 
         @FormUrlEncoded
@@ -107,7 +107,7 @@ public class RetrofitClient {
         Call<LinkBankResult> executeLinkBankResult(@Body HashMap<String, String> map);
         @GET("api/v1/bank/getAllBanks")
         Call<GetAllBanksResult> executeGetAllBanksResult();
-        @PUT("/api/v1/user/update")
+        @PUT("/api/v1/user/update-android")
         Call<BasicResult> excuteUpdateUser(@Body HashMap<String, String> map);
     }
     public interface MyCallback {
